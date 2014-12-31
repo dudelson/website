@@ -1,0 +1,16 @@
+body {
+    background-image: url("toast.jpg");
+    background-repeat: repeat;
+}
+
+embed {
+    width: 640;
+    height: 360;
+    padding-top: 20px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
