@@ -1,0 +1,16 @@
+body {
+    background-color: #10a154;
+    font-family: Times New Roman, Veranda, sans;
+    font-size: 20pt;
+    text-align: center;
+}
+
+#swf {
+    width: 640;
+    height:480;
+    margin: auto;
+}
+
+#toast {
+    font-size: 10px
+}
