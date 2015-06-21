@@ -5,10 +5,11 @@ author: David Udelson
 email: "" 
 description: "David Udelson's blog" # You can edit this line in _config.yml. It will appear in your document head meta and in your feed.xml site description
 keywords: ""
-baseurl: "/blog" # the subpath of your site, e.g. /blog
+baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://udelson.me" # the base hostname & protocol for your site
 locale: en_US
 permalink: /blog/:categories/:year/:month/:day/:title/
+excerpt_separator: <!--more-->
 
 ### Personal info and site tools info:
 twitter_username: ""
