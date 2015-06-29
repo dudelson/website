@@ -1,5 +1,5 @@
 ---
-title: "UVA 10258: Contest Scoreboard"
+title: "UVa 10258: Contest Scoreboard"
 tags: uva 2d-array implementation
 ---
 I did not think that [UVa 10258: Contest Scoreboard](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&category=24&problem=1199) was a well-written problem. The problem statement did not specify the expected behavior well. I imagine this problem was the subject of many clarification requests when it was used in competition. Then again, I probably just need to practice reading problem statements carefully.<!--more--> Things I got wrong in this problem included:
@@ -21,6 +21,13 @@ for(int i=0; i<n; i++) memset(array[i], 0, m);
 {% endhighlight %}
 
 Alas, this was not the way. Doing this results in random entries in the array not being zeroed or set to random values. Clearly I do not understand 2D arrays well enough yet. I will update this post when I know why this happens.
+
+**UPDATE**: Don't use memset at all! It is better to use `fill_n` from the `<algorithm>` header, which takes a more intuitive length parameter the same as other STL functions. Initializing a 2D nxm array using fill_n looks like:
+{% highlight c++ %}
+    int array[n][m];
+for(int i=0; i<n; i++) fill_n(array[i], m, 0);
+{% endhighlight %}
+Just like we would expect!
 
 Here's my solution:
 
