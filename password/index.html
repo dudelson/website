@@ -1,0 +1,72 @@
+<!--
+ TODO:
+  - "show" button doesn't work the first time
+  - password text is off-center
+  - "copied text to clipboard" message shouldn't move logoff button
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Master Password &mdash; Secure your life, forget your passwords.</title>
+        <meta content="Master Password is an ingenious password solution that makes your passwords truly impossible to lose." />
+        <meta name="apple-itunes-app" content="app-id=510296984" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/main.css?2">
+    </head>
+    <body>
+        <section id="identity" class="active"><form action="#">
+            <p>
+	    <!--<input id="userName" type="text" placeholder="Your Full Name" /><br>-->
+		<h2 id="id-identicon"></h2>
+                <input id="masterPassword" type="password" placeholder="Your Master Password" /><br>
+                <input type="submit" value="⏎" /><br>
+                <input type="image" src="img/spinner.svg" />
+            </p>
+        </form></section>
+
+        <section id="site">
+            <p>
+		<h2 id="site-identicon"></h2>
+                <input id="siteName" type="text" placeholder="Site Name (eg. apple.com)" /><br>
+                <span class="small">
+                    <input id="siteCounter" type="number" placeholder="Site Counter" min="1" max="100" value="1" class="half" />
+                    <select id="siteType" class="half">
+                        <option value="pin">PIN</option>
+                        <option value="short">Short</option>
+                        <option value="basic">Basic</option>
+                        <option value="medium">Medium</option>
+                        <option value="long" selected>Long</option>
+                        <option value="maximum">Maximum</option>
+                        <option value="name">Name</option>
+                        <option value="phrase">Phrase</option>
+                    </select>
+                </span><br>
+		<div id="hidden"></div>
+		<div id="pass-and-show">
+		    <h2 id="sitePassword"></h2>
+		    <button id="show"><img src="img/eye.png" width="20" height="20" /></button>
+		</div><br>
+		<div id="copy-status"></div><br>
+                <input id="logout" type="submit" value="⎋" />
+                <input type="image" src="img/spinner.svg" />
+            </p>
+        </section>
+
+        <footer>
+        <p>This page was made possible thanks to <a href="https://tomthorogood.co.uk/" title="Tom Thorogood">tmthrgd</a>'s <a href="https://github.com/tmthrgd/mpw-js">mpw-js</a>.<br>
+        <em><a href="http://masterpasswordapp.com">Master Password</a> is a security product and algorithm by <a href="http://www.lhunath.com" title="Maarten Billemont">Maarten Billemont</a>, <a href="http://www.lyndir.com">Lyndir</a> (&copy; 2011-2014).</em><br>
+        Usage implies agreement with our <a href="http://masterpasswordapp.com/privacy.html">privacy policy and disclaimer</a>.</p>
+        </footer>
+
+        <!-- Scripts -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-2.1.1.js"><\/script>')</script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-2.1.1.min.js"><\/script>')</script>
+        <script src="js/dependencies.js?3"></script>
+        <script src="js/main.js?3"></script>
+	<script src="js/identicon.js"></script>
+    </body>
+
+</html>
