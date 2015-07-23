@@ -1,0 +1,109 @@
+#!/usr/bin/env python2
+
+# TODO:
+#   - method which converts problem_title input by user into a string useable in a filename (all lowercase, no special chars, hyphens in place of spaces
+#   - insert link to problem pdf
+#   - remove AC and thoughts comments from copied source file
+#   - read paths from config file. Put the config file in .gitignore, so that the script can be used universally
+#   - insert <!--more--> separator
+
+'''make_blog_post: Convert UVa solutions into blog posts
+
+usage:
+    make_blog_post <problem_number> <problem_title>
+
+options:
+    -h --help     Print this help message and exit
+    -v --verbose  Enable verbose logging
+'''
+import os
+import shutil
+import datetime
+import logging
+from os.path import abspath, join, split
+from docopt import docopt
+
+CODE_ROOT_DIR = '/home/david/Dropbox/code/comps/halim_competitive_programming'
+COPY_DEST_DIR = '/home/david/udelson.me/_posts/downloads/uva'
+POST_HEADER = '''---
+title: "UVa %s: %s"
+tags: uva
+---
+'''
+POST_INCLUDE_SOURCE = '''{%% highlight cpp %%}
+{%% include_relative downloads/uva/%s.cpp %%}
+{%% endhighlight %%}
+'''
+
+logging.basicConfig(format='%(message)s', level=logging.INFO)
+
+def generate_code_file(args):
+    ''' 
+    Finds all .cpp source files in halim_competative_programming directory tree 
+    with <problem number> in their filenames. Greps these files until it finds 
+    one with the comment /* AC */ on a single line (there should only be one such file!)
+    copies this file into the _posts/downloads/uva directory
+    '''
+    def find_accepted_source(number):
+        for root, dirs, files in os.walk(CODE_ROOT_DIR):
+            dirname = join(CODE_ROOT_DIR, root)
+            logging.info('Entering ' + dirname + '...')
+            for file in filter(lambda x: number in x and '.cpp' in x, files):
+                filename = join(dirname, file)
+                logging.info('Grepping ' + filename + '...')
+                with open(filename) as f:
+                    for line in f:
+                        if line.strip() == '// AC':
+                            logging.info(filename + ' is an AC solution')
+                            return filename
+                    else:
+                        logging.info(filename + ' is not AC')
+
+    number = str(args['<problem_number>'])
+    #file_to_copy = None
+    file_to_copy = find_accepted_source(number)
+    if file_to_copy is None:
+        logging.critical('Unable to find a source code file for uva problem ' + number)
+        return
+    logging.info('Copying %s to %s...'%(file_to_copy, COPY_DEST_DIR))
+    shutil.copy(file_to_copy, COPY_DEST_DIR)
+    head, tail = split(file_to_copy)
+    if tail != number+'.cpp':
+        old_path = join(COPY_DEST_DIR, tail)
+        new_path = join(COPY_DEST_DIR, number+'.cpp')
+        logging.info('Moving %s to %s'%(old_path, new_path))
+        shutil.move(old_path, new_path)
+
+def generate_post_file(args):
+    ''' creates a file in the _posts directory with the title
+        "UVa <problem number>: <problem title>" and fills it in with
+        some boilerplate content. Takes the "thoughts" comment from the
+        source file and copy-pastes it in
+    '''
+    number = args['<problem_number>']
+    title = args['<problem_title>']
+    today = datetime.date.today()
+    y, m, d = today.year, today.month, today.day
+    post_file_name = '{}-{:02}-{:02}-uva-{}-{}.md'.format(y, m, d, number, '-'.join(title.split()).lower())
+    with open(join(abspath('_posts'), post_file_name), 'w') as post_file:
+        post_file.write(POST_HEADER%(number, title))
+        # copy the "thoughts" comment from the source file into this file
+        with open(join(abspath('_posts/downloads/uva'), number+'.cpp')) as source_file:
+            do_copy = False
+            for line in source_file:
+                line = line.strip()
+                if '/* thoughts' in line:
+                    do_copy = True
+                if do_copy and '*/' in line:
+                    break
+                if do_copy:
+                    post_file.write(line)
+        post_file.write('\n\n\n')
+        post_file.write(POST_INCLUDE_SOURCE%(number))
+    logging.info('Created _posts/'+post_file_name)
+    
+if __name__ == '__main__':
+    args = docopt(__doc__, version='make_blog_post 1.0')
+    generate_code_file(args)
+    generate_post_file(args)
+
