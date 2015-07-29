@@ -1,0 +1,18 @@
+---
+title: "UVa 11235: Frequent values"
+tags: uva segment-tree
+---
+[UVa 11235: Frequent values](https://uva.onlinejudge.org/external/112/p11235.pdf) simplified problem statement: You are given an array of integers and a number of queries. Each query is in the form of two positive integers i and j, and your program must print the number of occurances of the most frequently occuring value in the array between indicies i and j, inclusive.
+<!--more-->
+This problem really stretched my problem solving abilities. I knew from the start that the problem could be solved in time using a [segment tree](http://www.geeksforgeeks.org/segment-tree-set-1-range-minimum-query/) because the problem was listed as a segment tree practice problem in [CP3](http://cpbook.net/). However, beyond that, I was stuck. This was clearly different from an RMQ or RSQ, so what data was I supposed to store?
+
+Eventually, I figured out that because the array given in each test case is sorted in non-decreasing order, the frequency of a number within a given range can be calculated in constant time, assuming you already have the range in which the number appears in the array. This meant that it wasn't necessary to store the frequencies of the array elements in the segment tree itself, because I could calculate the frequencies whenever I wanted with no significant time cost. Thus, I kept an STL map of integers to the ranges in which they appeared in the array, and each node in the segment tree stored an array element. While writing this solution, I made a couple of mistakes I had to spent precious time debugging, including not noticing that the problem specified 1-based indexing, and counting the frequencies within the wrong ranges in my search method.
+
+It was after debugging my solution on the problem input that I realized there was a flaw in my reasoning. My solution failed for inputs with a certain property, which I will illustrate with an example. Take the input array [2, 2, 2, 3, 3, 3, 3, 4, 4, 4] and the query (1, 10) (i.e. the entire array). By inspection, it is clear the answer to this query should be 4 (because the number 3 appears 4 times), but my program returned 3. This is because the interval of the array containing the 3s was split in half between the left and right side of the segment tree. In other words, if the root of the tree is at height 0, the left node at height 1 (responsible for the range [2, 2, 2, 3, 3]) correctly held the value 2, and the right side (responsible for the range [3, 3, 4, 4, 4]) correctly held the value 4, which meant that in the calculation of the value for the root node, 3 was not even considered. To work around this corner case, I added some logic that detected ranges of the same integer that were "split" around left and right child nodes, and took this additional number into consideration if found.
+
+At this point I submitted and got TL. I realized that the STL map I was using to look up rangesdid lookups in O(logn) (where n is the size of the map), which was too slow. The lookup needed to be in constant time. Luckily, the numbers in the array were guaranteed to be between -10^6 and 10^6, which was a small enough range to store in an array. After switching the map to a vector, my solution passed.
+
+Source:
+{% highlight cpp %}
+{% include_relative downloads/uva/11235.cpp %}
+{% endhighlight %}
