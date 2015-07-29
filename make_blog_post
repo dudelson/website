@@ -84,8 +84,7 @@ def generate_post_file(args):
     '''
     number = args['<problem_number>']
     title = args['<problem_title>']
-    #today = datetime.date.today()
-    today = datetime.date(2015, 7, 25)
+    today = datetime.date.today()
     y, m, d = today.year, today.month, today.day
     post_file_name = '{}-{:02}-{:02}-uva-{}-{}.md'.format(y, m, d, number, '-'.join(title.split()).lower())
     with open(join(abspath('_posts'), post_file_name), 'w') as post_file:
