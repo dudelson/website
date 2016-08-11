@@ -1,12 +1,15 @@
+source: blog
+gems: [jekyll-paginate]
+
 ### Site info:
 title: David Udelson
 tagline: Totally not a spambot...
 author: David Udelson
 email: "" 
-description: "David Udelson's blog" # You can edit this line in _config.yml. It will appear in your document head meta and in your feed.xml site description
+description: "David Udelson's blog" 
 keywords: ""
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://udelson.me" # the base hostname & protocol for your site
+baseurl: "/blog" # the subpath of your site, e.g. /blog
+url: "http://davidudelson.com/" # the base hostname & protocol for your site
 locale: en_US
 permalink: /blog/:categories/:year/:month/:day/:title/
 excerpt_separator: <!--more-->
@@ -15,9 +18,10 @@ excerpt_separator: <!--more-->
 twitter_username: ""
 github_username:  dudelson
 disqus_shortname:
-favicon: "/images/favicon.png"
+favicon: "static/img/main_favicon.png"
+stylesheet: "static/css/freshman21.css"
 aboutme: Sometimes I code. Sometimes I even do it competitively. Sometimes I do other things, too.
-aboutme_photo: "/images/about_me.jpg"
+aboutme_photo: "static/img/about_me.jpg"
 
 ### Site setting:
 ShowContactInfo: "True" # Personal Info (twitter,github,email) can be seen on aboutme-sidebar, those info only shown when ShowContactInfo == True
@@ -35,7 +39,7 @@ defaults:
 
 ### Build settings
 markdown: kramdown
-highlighter: pygments
+highlighter: rouge
 paginate: 5
 paginate_path: "/blog/page:num/"
 
@@ -56,27 +60,3 @@ locales:
       PostedInCategories: "Posted in"
       Taggedwith: "and tagged"  
       PostDate: "Posted on "
-    cn:
-      Aboutme: "关于我"
-      Archives: "存档"
-      Blogroll: "良师益友"        
-      Categories: "分类目录"    
-      Copyright_Notice: "版权声明"
-      Recent_Posts: "近期文章"
-      Tags: "标签" 
-      Previous: "前一页"
-      Next: "后一页"
-      PostedInCategories: "目录:"   
-      Taggedwith: "| 标签:"
-      PostDate: "| 发表时间: "
-
-
-### your Blogroll info, only name can shown on the page.
-
-#Blogroll:
-#- name: Freshman21
-#href: http://yulijia.net/freshman21
-#title: Another Jekyll blog theme
-#- name: author's website
-#href: http://yulijia.net/
-#title: Lijia Yu's website

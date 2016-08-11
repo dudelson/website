@@ -1,0 +1,21 @@
+div {
+    font-family: sans;
+    font-size: 60px;
+    text-align: center;
+}
+
+.query {
+    margin-top: 20%;
+}
+
+.answer {
+    margin-bottom: 20%;
+}
+
+#guess {
+    width: 67%;
+    font-size: 1em;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+}
