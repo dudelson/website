@@ -1,6 +1,18 @@
 gems: [jekyll-paginate]
 
-### Site config:
+### Github settings
+# These settings are automatically forced by github anyway,
+# so I'm making them explicit here to avoid descrepancies
+lsi: false
+#safe: true
+incremental: false
+highlighter: rouge
+gist:
+    noscript: false
+kramdown:
+    math_engine: mathjax
+
+### Site config
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://davidudelson.com/" # the base hostname & protocol for your site
 permalink: /blog/:categories/:year/:month/:day/:title/
