@@ -1,4 +1,3 @@
-source: blog
 gems: [jekyll-paginate]
 
 ### Site info:
@@ -8,7 +7,7 @@ author: David Udelson
 email: "" 
 description: "David Udelson's blog" 
 keywords: ""
-baseurl: "/blog" # the subpath of your site, e.g. /blog
+baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://davidudelson.com/" # the base hostname & protocol for your site
 locale: en_US
 permalink: /blog/:categories/:year/:month/:day/:title/
@@ -18,10 +17,10 @@ excerpt_separator: <!--more-->
 twitter_username: ""
 github_username:  dudelson
 disqus_shortname:
-favicon: "static/img/main_favicon.png"
-stylesheet: "static/css/freshman21.css"
+favicon: "/static/img/main_favicon.png"
+stylesheet: "/static/css/freshman21.css"
 aboutme: Sometimes I code. Sometimes I even do it competitively. Sometimes I do other things, too.
-aboutme_photo: "static/img/about_me.jpg"
+aboutme_photo: "/static/img/about_me.jpg"
 
 ### Site setting:
 ShowContactInfo: "True" # Personal Info (twitter,github,email) can be seen on aboutme-sidebar, those info only shown when ShowContactInfo == True
