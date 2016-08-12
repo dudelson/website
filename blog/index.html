@@ -4,7 +4,8 @@ layout: default
 
 <div class="home">
   <div class="post" itemscope itemtype="http://schema.org/BlogPosting" >
-    
+      <h1>Total posts: {{ paginator.total_posts }}</h1>
+      <h1>Posts: {{ posts }}</h1>
     {% for post in paginator.posts %}
   
     <header class="post-header">
