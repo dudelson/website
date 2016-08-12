@@ -12,6 +12,10 @@ gist:
 kramdown:
     math_engine: mathjax
 
+# whitelist pagination plugin so it isn't blocked by safe mode
+# the fact that the github-pages gem doesn't already do this is a bug
+whitelist:
+  - jekyll-paginate
 
 ### Site config
 baseurl: "" # the subpath of your site, e.g. /blog
@@ -20,7 +24,6 @@ permalink: /blog/:categories/:year/:month/:day/:title/
 favicon: "/static/img/main_favicon.png"
 stylesheet: "/static/css/freshman21.css"
 aboutme_photo: "/static/img/about_me.jpg"
-future: true
 
 ### Site info:
 title: David Udelson
@@ -55,9 +58,6 @@ defaults:
 ### Build settings
 paginate: 5
 paginate_path: "/blog/page:num/"
-
-#sass:
-    #load_paths: [_sass]
 
 ###############################################################################
 
