@@ -18,30 +18,29 @@ whitelist:
   - jekyll-paginate
 
 ### Site config
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://davidudelson.com/" # the base hostname & protocol for your site
+baseurl: "" 
+url: "http://davidudelson.com/"
 permalink: /blog/:categories/:year/:month/:day/:title/
+locale: en_US
+excerpt_separator: <!--more-->
+
+### Resources
 favicon: "/static/img/main_favicon.png"
 stylesheet: "/static/css/freshman21.css"
 aboutme_photo: "/static/img/about_me.jpg"
 
-### Site info:
+### Personal Info
 title: David Udelson
 tagline: Totally not a spambot...
 author: David Udelson
 email: "" 
 description: "David Udelson's blog" 
 keywords: ""
-locale: en_US
-excerpt_separator: <!--more-->
-
-### Personal info and site tools info:
 twitter_username: ""
 github_username:  dudelson
 disqus_shortname:
 aboutme: Sometimes I code. Sometimes I even do it competitively. Sometimes I do other things, too.
 
-### Site setting:
 ShowContactInfo: "True" # Personal Info (twitter,github,email) can be seen on aboutme-sidebar, those info only shown when ShowContactInfo == True
 default_column: "two" # blog style: two columns, if default_column != "two", you will see a one column blog.
 default_locale: "en" # blog sidebar language set, only include: English(en) and Chinese (cn)
