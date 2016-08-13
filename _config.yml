@@ -28,7 +28,11 @@ excerpt_separator: <!--more-->
 favicon: "/static/img/main_favicon.png"
 aboutme_photo: "/static/img/about_me.jpg"
 
-### Personal Info
+### Blog config
+blog:
+    title: Probably Mostly Software
+    subtitle: Maybe.
+
 title: David Udelson
 tagline: Totally not a spambot...
 author: David Udelson

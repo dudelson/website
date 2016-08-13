@@ -4,5 +4,6 @@ body {
 }
 
 .navbar {
+  font-family: sans-serif;
   margin-bottom: 20px;
 }
