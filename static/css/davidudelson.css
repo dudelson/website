@@ -1,0 +1,18 @@
+/* styles for the main layout (_layouts/davidudelson.html) */
+
+body {
+  color: #555;
+  background-color: #5292f2;
+  padding-bottom: 0;
+}
+
+/*
+ * Override Bootstrap's default container.
+ */
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1050px;
+    background-color: #ffffff;
+  }
+}

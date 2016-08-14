@@ -23,10 +23,7 @@ url: "http://davidudelson.com/"
 permalink: /blog/:categories/:year/:month/:day/:title/
 locale: en_US
 excerpt_separator: <!--more-->
-
-### Resources
-favicon: "/static/img/main_favicon.png"
-aboutme_photo: "/static/img/about_me.jpg"
+title: David Udelson
 
 ### Blog config
 about_short: Junior at Cornell, programmer, and aikidoka. I love to play the tuba and configure my editor (not at the same time).
@@ -38,14 +35,6 @@ author: David Udelson
 email: "" 
 description: "David Udelson's blog" 
 keywords: ""
-twitter_username: ""
-github_username:  dudelson
-disqus_shortname:
-aboutme: Sometimes I code. Sometimes I even do it competitively. Sometimes I do other things, too.
-
-ShowContactInfo: "True" # Personal Info (twitter,github,email) can be seen on aboutme-sidebar, those info only shown when ShowContactInfo == True
-default_column: "two" # blog style: two columns, if default_column != "two", you will see a one column blog.
-default_locale: "en" # blog sidebar language set, only include: English(en) and Chinese (cn)
 
 ### Front Matter defaults
 defaults:
@@ -59,21 +48,3 @@ defaults:
 ### Build settings
 paginate: 5
 paginate_path: "/blog/page:num/"
-
-###############################################################################
-
-### Locale settings
-locales:
-    en:
-      Aboutme: "About Me"
-      Archives: "Archives"
-      Blogroll: "Blogroll"
-      Categories: "Categories"
-      Copyright_Notice: "Copyright Notice"
-      Recent_Posts: "Recent Posts"
-      Tags: "Tags"
-      Previous: "Older"
-      Next: "Newer"
-      PostedInCategories: "Posted in"
-      Taggedwith: "and tagged"  
-      PostDate: "Posted on "
