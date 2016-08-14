@@ -1,0 +1,13 @@
+footer {
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 100px;
+  padding: 20px 0;
+  color: #999;
+  line-height: 20px; /* Vertically center the text there */
+  text-align: center;
+  /*background-color: #f9f9f9;*/
+  background-color: #0000ff;
+  border-top: 1px solid #e5e5e5;
+}

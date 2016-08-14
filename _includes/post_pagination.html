@@ -1,13 +1,16 @@
-<section class="pager">
+<nav class="blog-pagination">
   {% if paginator.previous_page %}
-  {% if paginator.previous_page == 1 %}
-  <li class="previous"><a href="{{site.baseurl}}/blog" title="{{ site.locales[site.default_locale].Next }}">&larr; {{ site.locales[site.default_locale].Next }}</a></li>
-  {% else %}
-  <li class="previous"><a href="{{site.baseurl}}/blog/page{{ paginator.previous_page }}/" title="{{ site.locales[site.default_locale].Next }}">&larr; {{ site.locales[site.default_locale].Next }}</a></li>
-  {% endif %}
+    {% if paginator.previous_page == 1 %}
+        <a class="btn btn-outline-primary" href="{{site.baseurl}}/blog">Newer</a>
+    {% else %}
+        <a class="btn btn-outline-primary" href="{{site.baseurl}}/blog/page{{ paginator.previous_page }}/">Newer</a>
+    {% endif %}
+ {% else %}
+    <a class="btn btn-outline-secondary disabled" href="#">Newer</a>
   {% endif %}
   {% if paginator.next_page %}
-  <li class="next"><a href="{{site.baseurl}}/blog/page{{ paginator.next_page }}/" title="{{ site.locales[site.default_locale].Previous }}">{{ site.locales[site.default_locale].Previous }} &rarr;</a></li>
+  <a class="btn pull-xs-right btn-outline-primary" href="{{site.baseurl}}/blog/page{{ paginator.next_page }}/">Older</a>
+  {% else %}
+  <a class="btn pull-xs-right btn-outline-secondary disabled" href="#">Older</a>
   {% endif %}
-</section>
-
+</nav>

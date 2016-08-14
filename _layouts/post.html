@@ -1,62 +1,13 @@
 ---
+layout: blog
 ---
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        {% include head.html %}
-        <link rel="stylesheet" href="/static/css/blog.css">
-    </head>
-    <body>
-        {% include navbar.html %}
-        <div class="container">
-            <div class="blog-header">
-                <h1 class="blog-title">The Bootstrap Blog</h1>
-                <p class="lead blog-description">The official example template of creating a blog with Bootstrap.</p>
-            </div>
-            <div class="row">
-                <div class="col-sm-8 blog-main">
-                    <div class="blog-post">
-                        <h2 class="blog-post-title">{{ page.title }}</h2>
-                        <meta itemprop="keywords" content="{{ page.tags | join: ',' }}" />
-                        <p class="blot-post-meta">
+<!--
     <time itemprop="datePublished" datetime="{{ page.date | date: '%Y-%m-%d' }}">
     {{ site.locales[site.default_locale].PostDate }}{{ page.date | date: "%b %-d, %Y" }}
     </time>
-                        </p>
-  <article class="post-content" itemprop="articleBody">
+    -->
     {{ content }}
-  </article>
-  <p class="post-meta">
-    Tags: 
+    <!--
 	{% for tag in page.tags %}
 	<a href="{{ site.baseurl }}/tags/#{{ tag }}" title="{{ tag }}">{{ tag }}</a>{% unless page.tags.last == tag %}, {% endunless %}
-	{% endfor %}
-  </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {% include js.html %}
-    </body>
-</html>
-
-<!--
-<div class="post" itemscope itemtype="http://schema.org/BlogPosting">
-
-  <header class="post-header">
-    <h1 itemprop="name" class="post-title">{{ page.title }}</h1>
-    <p class="post-meta">
-    {{ site.locales[site.default_locale].PostedInCategories }}
-    {% for cat in page.categories %}
-    <a href="{{site.baseurl}}/categories/#{{ cat }}">{{ cat }}</a>&nbsp;
-    {% endfor %} 
-    </p>
-  </header>
-
-  <hr />
-</div>
-
-
-{% include page_pagination.html%}
-{% include comments.html %}
--->
+	{% endfor %} -->

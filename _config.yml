@@ -29,12 +29,11 @@ favicon: "/static/img/main_favicon.png"
 aboutme_photo: "/static/img/about_me.jpg"
 
 ### Blog config
+about_short: Junior at Cornell, programmer, and aikidoka. I love to play the tuba and configure my editor (not at the same time).
 blog:
     title: Probably Mostly Software
     subtitle: Maybe.
 
-title: David Udelson
-tagline: Totally not a spambot...
 author: David Udelson
 email: "" 
 description: "David Udelson's blog" 
