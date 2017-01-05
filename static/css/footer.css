@@ -1,6 +1,7 @@
 /* styles used by the footer (_includes/footer.html) */
 
 #footer {
+  position: absolute;
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
