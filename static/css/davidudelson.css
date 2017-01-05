@@ -5,6 +5,10 @@ body {
     font-size: 16px;
 }
 
+table {
+    table-layout: fixed;
+}
+
 /*
  * Override Bootstrap's default container.
  */
@@ -12,6 +16,5 @@ body {
 @media (min-width: 1200px) {
   .container {
     width: 1050px;
-    background-color: #ffffff;
   }
 }
