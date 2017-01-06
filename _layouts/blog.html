@@ -1,19 +1,42 @@
 ---
 layout: davidudelson
 ---
-<div class="blog-header">
-    <h1 class="blog-title">{{ site.blog.title }}</h1>
-    <p class="lead blog-description">{{ site.blog.subtitle }}</p>
+<div id="blog-header">
+    <h1 id="blog-title">{{ site.blog.title }}</h1>
+    <p id="blog-description">{{ site.blog.subtitle }}</p>
 </div>
 <div class="row">
-    <div class="col-sm-8 blog-main">
+    <div id="blog-main" class="col-xs-12 col-md-9">
         {{ content }}
     </div>
-    <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+    <div id="blog-sidebar" class="col-xs-6 col-md-3">
+        <img class="img-responsive" src="/static/img/headshot.jpg" alt="David Udelson"/>
         <div class="sidebar-module sidebar-module-inset">
             <h4>About</h4>
             <p>{{ site.about_short }}</p>
         </div>
+        <table class="table table-condensed" >
+        <tbody>
+            <tr>
+                <td><span class="glyphicon glyphicon-education" aria-hidden="true"></span></td>
+                <td colspan="3">Cornell University '18</td>
+            </tr>
+            <tr>
+                <td><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span></td>
+                <td colspan="3">Ithaca, NY</td>
+            </tr>
+            <tr>
+                <td><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></td>
+                <td colspan="3">{% include email_obfuscator.html %}</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.linkedin.com/in/david-udelson-6aa323123"><img class="img-responsive" src="/static/img/logos/linkedin.png" alt="My linkedin profile"></a></td>
+                <td><a href="https://www.github.com/dudelson"><img class="img-responsive" src="/static/img/logos/github.png" alt="My github profile"></a></td>
+                <td><a href="https://www.twitter.com/ubeatlenine"><img class="img-responsive" src="/static/img/logos/twitter.png" alt="Contact me on twitter"></a></td>
+                <td><a href="https://t.me/dudelson"><img class="img-responsive" src="/static/img/logos/telegram.png" alt="Contact me on telegram"></a></td>
+            </tr>
+        </tbody>
+        </table>
         <div class="sidebar-module">
             <h4>Archives</h4>
             <ol class="list-unstyled">
@@ -26,14 +49,6 @@ layout: davidudelson
             <li id="{{ year }}" > <a href="{{ site.baseurl }}/archives/#{{year}}">{{ year }}</a></li>
             {% endunless %}
             {% endfor %}
-            </ol>
-        </div>
-        <div class="sidebar-module">
-            <h4>Elsewhere</h4>
-            <ol class="list-unstyled">
-            <li><a href="#">GitHub</a></li>
-            <li><a href="#">Twitter</a></li>
-            <li><a href="#">Facebook</a></li>
             </ol>
         </div>
     </div>
