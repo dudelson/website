@@ -14,15 +14,8 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <link rel="stylesheet" href="/static/css/davidudelson.css">
-<link rel="stylesheet" href="/static/css/navbar.css">
-<link rel="stylesheet" href="/static/css/footer.css">
-<!-- include page-specific stylesheets -->
-{% if page.url == '/index.html' %}
-<!-- nothing here for now -->
-{% else if page.url contains 'blog' %}
-    <link rel="stylesheet"  href="/static/css/blog.css">
-{% endif %}
-
+<link rel="stylesheet" href="/static/css/blog.css">
+<link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet"> 
 <link rel="canonical" href="{{ page.url | replace:'index.html','' |  prepend: site.url }}">
 <link rel="icon" type="image/png" sizes="any" href="/static/img/main_favicon.png">
 </head>
