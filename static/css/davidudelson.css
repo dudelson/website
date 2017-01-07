@@ -53,8 +53,8 @@ table {
     body {
         text-align: center;
     }
-    .navbar img {
-        max-height: 20px;
+    .mobile-nav-img {
+        width: 20px;
     }
     .desktop-only {
         display: none;
