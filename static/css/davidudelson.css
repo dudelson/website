@@ -45,13 +45,21 @@ table {
     border-top: 1px solid #e5e5e5;
 }
 
+/* hide the mobile-specific stuff by default (unless overridden by a media query) */
+.mobile-only {
+    display: none;
+}
+
 /*
  * CSS for mobile devices
  */
 
-@media (min-device-width : 320px) and (max-device-width : 480px) {
+@media (min-width : 320px) and (max-width : 480px) {
     body {
         text-align: center;
+    }
+    h1 {
+        margin: 0;
     }
     .mobile-nav-img {
         width: 20px;
@@ -59,14 +67,21 @@ table {
     .desktop-only {
         display: none;
     }
+    .mobile-only {
+        display: initial;
+    }
 }
+
 /*
  * Override Bootstrap's default container.
  */
 
-@media (min-width: 1200px) {
+@media (min-width: 480px) {
   .container {
     width: 1050px;
+  }
+  .desktop-only {
+      display: initial;
   }
   .mobile-only {
       display: none;
