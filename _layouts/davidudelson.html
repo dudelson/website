@@ -3,7 +3,12 @@
     {% include head.html %}
     <body>
        <div id="thingy" >
-            {% include navbar.html %}
+           <div class="desktop-only">
+            {% include desktop_navbar.html %}
+           </div>
+           <div class="mobile-only"
+               {% include mobile_navbar.html %}
+           </div>
             <div id="body" class="container">
                 {{ content }}
             </div>

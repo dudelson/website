@@ -53,7 +53,7 @@ table {
     body {
         text-align: center;
     }
-    #desktop-sidebar {
+    .desktop-only {
         display: none;
     }
 }
@@ -64,5 +64,8 @@ table {
 @media (min-width: 1200px) {
   .container {
     width: 1050px;
+  }
+  .mobile-only {
+      display: none;
   }
 }
