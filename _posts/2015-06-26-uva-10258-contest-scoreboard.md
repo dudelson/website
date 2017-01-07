@@ -1,6 +1,7 @@
 ---
 title: "UVa 10258: Contest Scoreboard"
 tags: uva 2d-array implementation
+gist: https://gist.github.com/dudelson/bc483d40b9937c4cc68d8a7c1f94ebd2
 ---
 I did not think that [UVa 10258: Contest Scoreboard](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&category=24&problem=1199) was a well-written problem. The problem statement did not specify the expected behavior well. I imagine this problem was the subject of many clarification requests when it was used in competition. Then again, I probably just need to practice reading problem statements carefully.<!--more--> Things I got wrong in this problem included:
 
@@ -30,7 +31,3 @@ for(int i=0; i<n; i++) fill_n(array[i], m, 0);
 Just like we would expect!
 
 Here's my solution:
-
-{% highlight c++ %}
-{% include_relative downloads/uva/10258.cpp %}
-{% endhighlight %}

@@ -1,10 +1,6 @@
 ---
 title: "UVa 11572: Unique Snowflakes"
 tags: uva implementation
+gist: https://gist.github.com/dudelson/c15c84bbd78d9e14b875cab0e07181fa
 ---
 [UVa 11572: Unique Snowflakes](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=24&page=show_problem&problem=2619) problem description: Given a list of snowflakes (integers), print the length of the longest sublist in which all of the snowflakes are unique. <!--more--> This problem can be solved using an STL map. A map is a container that maps keys of any type to values of any type and does lookups, insertions, and deletions in O(log n), where n is the number of elements in the map. Internally, STL maps are usually implemented as red-black trees. In short, the map is a good STL container to become acquainted with! For this problem, we use a map to keep track of the index of the last occurance of each snowflake. Normally one could also use a vector or array for this purpose, but in this case there are too many possible snowflakes(10^9). But since we are guaranteed that there will be no more than one million snowflakes total, we can get away with using a map, because the map, unlike the vector, only stores the keys it needs to. Thus our map will be of size one million tops, whereas a vector or array implementation would consistently be of size 10^9, which is too big to fit into memory. This algorithm also uses variables `cnt` and `block`. `cnt` stores the number of unique snowflakes seen so far, and `block` stores the index of the last snowflake that wasn't unique. When the algorithm finds a snowflake that isn't unique, it resets `cnt` to the number of snowflakes between the most recent "conflict" (a snowflake that was found to not be unique) and the current index, and updates `block` to reflect the new most recent collision. Every iteration, the variable `ans` is calculated as the max of itself and the current value of `cnt`, which ensures that the algorithm always finds the largest range.
-
-Source:
-{% highlight cpp %}
-{% include_relative downloads/uva/11572.cpp %}
-{% endhighlight %}
