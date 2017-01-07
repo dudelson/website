@@ -16,7 +16,6 @@ table {
     table-layout: fixed;
 }
 
-/* ===== these styles are necessary to get the footer to behave correctly ===== */
 #thingy {
     min-height: 100%;
     position: relative;
@@ -29,8 +28,8 @@ table {
 }
 
 #body {
-    padding:10px;
-    padding-bottom:60px;   /* Height of the footer */
+    padding: 10px;
+    padding-bottom: 100px;   /* Height of the footer */
 }
 
 #footer {
@@ -45,7 +44,6 @@ table {
     background-color: #f9f9f9;
     border-top: 1px solid #e5e5e5;
 }
-/* ============================================================================ */
 
 /*
  * Override Bootstrap's default container.
