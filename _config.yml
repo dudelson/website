@@ -20,21 +20,28 @@ whitelist:
 ### Site config
 baseurl: "" 
 url: "http://davidudelson.com/"
-permalink: /blog/:categories/:year/:month/:day/:title/
+permalink: /blog/:year/:month/:day/:title/
+# these variables are used by _includes/head.html to provide metadata about the site
 locale: en_US
-excerpt_separator: <!--more-->
 title: David Udelson
+description: "David Udelson's Corner of the Internet" 
+keywords: "David Udelson programming blog software engineering spacemacs vim
+emacs uva competitive programming"
 
 ### Blog config
+excerpt_separator: <!--more-->
 about_short: Computer nerd, aikidoka, tubist, and japanophile. I will sometimes post articles here, and they will probably be mostly about software.
 blog:
     title: Probably Mostly Software
     subtitle: "A code enthusiast's blog"
 
-author: David Udelson
-email: "" 
-description: "David Udelson's blog" 
-keywords: ""
+### Concact info
+contact:
+    # My email is not provided here, as that would defeat the purpose of obfuscation!
+    linkedin: "https://www.linkedin.com/in/david-udelson-6aa323123"
+    github: "https://github.com/dudelson/"
+    twitter: "https://twitter.com/dudelson/"
+    telegram: "https://t.me/dudelson"
 
 ### Front Matter defaults
 defaults:
