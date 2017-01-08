@@ -148,6 +148,9 @@ time {
     body {
         text-align: center;
     }
+    .post-content {
+        text-align: left;
+    }
     #navbar {
         margin: 0;
     }
