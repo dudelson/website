@@ -1,15 +1,15 @@
 <nav class="blog-pagination">
   {% if paginator.previous_page %}
     {% if paginator.previous_page == 1 %}
-        <a class="btn btn-outline-primary" href="{{site.baseurl}}/blog">Newer</a>
+        <a class="btn btn-default" href="{{site.baseurl}}/blog">Newer</a>
     {% else %}
-        <a class="btn btn-outline-primary" href="{{site.baseurl}}/blog/page{{ paginator.previous_page }}/">Newer</a>
+        <a class="btn btn-default" href="{{site.baseurl}}/blog/page{{ paginator.previous_page }}/">Newer</a>
     {% endif %}
  {% else %}
     <a class="btn btn-outline-secondary disabled" href="#">Newer</a>
   {% endif %}
   {% if paginator.next_page %}
-  <a class="btn pull-xs-right btn-outline-primary" href="{{site.baseurl}}/blog/page{{ paginator.next_page }}/">Older</a>
+  <a class="btn pull-xs-right btn-default" href="{{site.baseurl}}/blog/page{{ paginator.next_page }}/">Older</a>
   {% else %}
   <a class="btn pull-xs-right btn-outline-secondary disabled" href="#">Older</a>
   {% endif %}
