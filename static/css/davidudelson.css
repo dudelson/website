@@ -58,14 +58,17 @@ table {
     body {
         text-align: center;
     }
-    h1 {
+    #navbar {
         margin: 0;
     }
-    #navbar div {
-        float: right;
+    #navbar ul {
+        margin-top: 15px;
     }
     .mobile-nav-img {
-        width: 20px;
+        width: 30px;
+    }
+    #mobile-nav-headshot {
+        display: inline;
     }
     .desktop-only {
         display: none;

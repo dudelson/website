@@ -4,12 +4,13 @@ layout: davidudelson
 <div id="blog-header">
     <a href="/blog/"><h1 id="blog-title" style="color: #333">{{ site.blog.title }}</h1></a>
     <p id="blog-description">{{ site.blog.subtitle }}</p>
+    <p id="blog-mobile-about" class="mobile-only"><i>{{ site.about_short }}</i></p>
 </div>
 <div class="row">
     <div id="blog-main" class="col-xs-12 col-md-9">
         {{ content }}
     </div>
-    <div id="blog-sidebar" class="col-xs-6 col-md-3">
+    <div id="blog-sidebar" class="col-xs-6 col-md-3 desktop-only">
         <img class="img-responsive" src="/static/img/headshot.jpg" alt="David Udelson"/>
         <div class="sidebar-module sidebar-module-inset">
             <h4>About</h4>
