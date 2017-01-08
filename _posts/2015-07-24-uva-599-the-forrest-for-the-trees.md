@@ -1,7 +1,6 @@
 ---
 title: "UVa 599: The Forrest for the Trees"
 tags: uva ufds
-gist: https://gist.github.com/dudelson/6c2291ee9618436c1c73a38f05c1576d
 ---
 When solving [UVa 599: The Forrest for the Trees](https://uva.onlinejudge.org/external/5/p599.pdf) I was introduced to a new data structure: the [UFDS](https://en.wikipedia.org/wiki/Disjoint-set_data_structure) 
 <!--more-->
@@ -12,3 +11,5 @@ Before I learned about the UFDS, I tried using an adjacency list plus a set of n
 However, a plain ol' `vector<int>` UFDS is not sufficient to solve this problem because the nodes are not necessarily alphabetically contiguous (i.e. LMNOP is alphabetically contiguous but AQNX is not). Therefore it is necessary to use maps in place of vectors. This makes the runtime of the UFDS lookup and join operations increase from O(1) to O(logn) (where n is the size of the map), but that is not an issue for this problem. 
 
 Lastly, I suffered from the usual beginner mistakes I am still learning to avoid. These included forgetting to clear the maps at the beginning of each test case, and small typos, most notably `return (p[i] == i) ? i : (p[i] = getSet(i))` in the UFDS function `getSet`, which lead to infinite recursion that took me a while to debug.
+
+{% include gist.html url="https://gist.github.com/dudelson/6c2291ee9618436c1c73a38f05c1576d" %}

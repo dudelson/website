@@ -1,18 +1,5 @@
 ---
 layout: blog
 ---
-<!--
-    <time itemprop="datePublished" datetime="{{ page.date | date: '%Y-%m-%d' }}">
-    {{ site.locales[site.default_locale].PostDate }}{{ page.date | date: "%b %-d, %Y" }}
-    </time>
-    -->
-    <hr/>
-    {{ content }}
-    {% if page.gist %}
-        <script src="{{ page.gist }}.js"></script>
-    {% else %}
-    {% endif %}
-    <!--
-	{% for tag in page.tags %}
-	<a href="{{ site.baseurl }}/tags/#{{ tag }}" title="{{ tag }}">{{ tag }}</a>{% unless page.tags.last == tag %}, {% endunless %}
-	{% endfor %} -->
+<hr/>
+{{ content }}

@@ -1,7 +1,6 @@
 ---
 title: "UVa 11235: Frequent values"
 tags: uva segment-tree
-gist: https://gist.github.com/dudelson/13a5c58dda3a4a89b5c99b7d2aef5e04
 ---
 [UVa 11235: Frequent values](https://uva.onlinejudge.org/external/112/p11235.pdf) simplified problem statement: You are given an array of integers and a number of queries. Each query is in the form of two positive integers i and j, and your program must print the number of occurances of the most frequently occuring value in the array between indicies i and j, inclusive.
 <!--more-->
@@ -12,3 +11,5 @@ Eventually, I figured out that because the array given in each test case is sort
 It was after debugging my solution on the problem input that I realized there was a flaw in my reasoning. My solution failed for inputs with a certain property, which I will illustrate with an example. Take the input array [2, 2, 2, 3, 3, 3, 3, 4, 4, 4] and the query (1, 10) (i.e. the entire array). By inspection, it is clear the answer to this query should be 4 (because the number 3 appears 4 times), but my program returned 3. This is because the interval of the array containing the 3s was split in half between the left and right side of the segment tree. In other words, if the root of the tree is at height 0, the left node at height 1 (responsible for the range [2, 2, 2, 3, 3]) correctly held the value 2, and the right side (responsible for the range [3, 3, 4, 4, 4]) correctly held the value 4, which meant that in the calculation of the value for the root node, 3 was not even considered. To work around this corner case, I added some logic that detected ranges of the same integer that were "split" around left and right child nodes, and took this additional number into consideration if found.
 
 At this point I submitted and got TL. I realized that the STL map I was using to look up rangesdid lookups in O(logn) (where n is the size of the map), which was too slow. The lookup needed to be in constant time. Luckily, the numbers in the array were guaranteed to be between -10^6 and 10^6, which was a small enough range to store in an array. After switching the map to a vector, my solution passed.
+
+{% include gist.html url="https://gist.github.com/dudelson/13a5c58dda3a4a89b5c99b7d2aef5e04" %}
