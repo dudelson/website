@@ -2,20 +2,7 @@
 layout: blog
 ---
 {% for post in paginator.posts %}
-<hr/>
-<div class="blog-post">
-    <header class="post-header">
-        <h1 itemprop="name" class="post-title">
-            <a itemprop="url" class="post-link" href="{{ post.url }}">{{ post.title }}</a>
-        </h1>
-        <time itemprop="datePublished" datetime="{{ post.date | date: '%Y-%m-%d' }}">
-            {{ site.locales[site.default_locale].PostDate }}{{ post.date | date: "%b %-d, %Y" }}
-        </time>
-    </header>
-    <article class="post-content" itemprop="articleBody">
-        {{ post.excerpt }}
-    </article>
-</div>
+    {% include blog_post_listing_item.html %}
 {% endfor %}
 
 {% include post_pagination.html %}
