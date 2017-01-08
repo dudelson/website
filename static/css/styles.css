@@ -1,4 +1,4 @@
-/* styles for the main layout (_layouts/davidudelson.html) */
+/* styles for the default layout (_layouts/default.html) */
 
 h1,h2,h3,h4,h5,h6 {
     font-family: 'Cabin', sans-serif;
@@ -43,6 +43,96 @@ table {
     text-align: center;
     background-color: #f9f9f9;
     border-top: 1px solid #e5e5e5;
+}
+
+/* styles for the blog layout (_layouts/blog.html) */
+
+#blog-header {
+    padding: 0;
+}
+
+#blog-title {
+    font-size: 60px;
+    color: #333;
+}
+
+#blog-description {
+    font-size: 20px;
+    color: #999;
+}
+
+#blog-main {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+#post-header {
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+/* blog post listing item styles */
+
+.post-header div {
+    font-size: 14px;
+}
+
+time {
+    font-style: italic;
+    /* font-size: 14px; */
+    color: #999;
+    margin-bottom: 15px;
+}
+
+.post-content {
+    padding: 10px 0 10px 0;
+    font-size: 18px;
+}
+
+/* ============================= */
+
+#post-header div {
+    padding-top: 10px;
+}
+
+#post-content {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+#post-comments {
+    padding-top: 15px;
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+#post-buttons {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+#post-buttons a {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+/* Sidebar modules for boxing content */
+.sidebar-module {
+    padding: 15px;
+}
+
+.sidebar-module-inset {
+    padding: 15px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+}
+
+.blog-pagination {
+    padding: 15px 0;
+}
+
+.archive-months li {
+    padding-left: 10px;
 }
 
 /* hide the mobile-specific stuff by default (unless overridden by a media query) */
