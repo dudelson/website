@@ -31,4 +31,5 @@ echo "Running jekyll pre-build..."   \
 && bundle exec jekyll build          \
 && echo "Generating archives..."     \
 && ruby blog/archive/_generator.rb   \
+&& git add blog/archive/dates blog/archive/tags \
 && echo "Done!"
