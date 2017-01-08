@@ -70,6 +70,14 @@ table {
     #mobile-nav-headshot {
         display: inline;
     }
+    .blog-post {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    #blog-header {
+        background-color: #333;
+        color: #fff;
+    }
     .desktop-only {
         display: none;
     }
