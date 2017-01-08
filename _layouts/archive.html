@@ -1,0 +1,67 @@
+---
+layout: blog
+type: archive
+---
+<div>
+  <hr/>
+ {% assign posts = site.posts | reverse %}
+  <!-- year/month archives -->
+  {% if page.month %}
+    <h1> Archives: {{ page.title }} </h1>
+    {% capture pagemonth %} {{ page.year | append: '-' | append: page.month }} {% endcapture %}
+    {% for post in posts %}
+      {% capture postmonth %} {{ post.date | date: '%Y-%m' }} {% endcapture %}
+      {% if postmonth == pagemonth %}
+        <div>
+          <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+          <p class="meta">
+            on <a href="{{ post.date | date: '/%Y/%m/' }}">{{ post.date | date: "%b %-d, %Y" }}</a>
+          </p>
+          <p class="tags">
+            {% for tag in post.tags %}
+              <a href="/blog/tags/{{ tag | downcase | replace: ' ', '-' }}">{{ tag }}</a>
+            {% endfor %}
+          </p>
+        </div>
+      {% endif %}
+    {% endfor %}
+  <!-- year archives -->
+  {% elsif page.year %}
+    <h1> Archives: {{ page.title }} </h1>
+    {% capture pageyear %} {{ page.year }} {% endcapture %}
+    {% for post in posts %}
+      {% capture postyear %} {{ post.date | date: '%Y' }} {% endcapture %}
+      {% if postyear == pageyear %}
+        <div>
+          <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+          <p class="meta">
+            on <a href="{{ post.date | date: '/%Y/%m/' }}">{{ post.date | date: "%b %-d, %Y" }}</a>
+          </p>
+          <p class="tags">
+            {% for tag in post.tags %}
+              <a href="/blog/tags/{{ tag | downcase | replace: ' ', '-' }}">{{ tag }}</a>
+            {% endfor %}
+          </p>
+        </div>
+      {% endif %}
+    {% endfor %}
+  <!-- tag archives -->
+ {% elsif page.tag %}
+   <h1> Tag: {{ page.title }} </h1>
+   {% for post in posts %}
+     {% if post.tags contains page.tag %}
+        <div>
+          <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+          <p class="meta">
+            on <a href="{{ post.date | date: '/%Y/%m/' }}">{{ post.date | date: "%b %-d, %Y" }}</a>
+          </p>
+          <p class="tags">
+            {% for tag in post.tags %}
+              <a href="/blog/tags/{{ tag | downcase | replace: ' ', '-' }}">{{ tag }}</a>
+            {% endfor %}
+          </p>
+        </div>
+     {% endif %}
+   {% endfor %}
+ {% endif %}
+</div>

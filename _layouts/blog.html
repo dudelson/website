@@ -39,17 +39,49 @@ layout: davidudelson
         </table>
         <div class="sidebar-module">
             <h4>Archives</h4>
-            <ol class="list-unstyled">
-            {% for post in site.posts %}
-                {% capture this_year %}{{ post.date | date: "%Y" }}{% endcapture %}
-                {% unless year == this_year %}
-                    {% assign year = this_year %}
-                    {% unless post == site.posts.first %}
-                    {% endunless %}
-                    <li id="{{ year }}" > <a href="{{ site.baseurl }}/archives/#{{year}}">{{ year }}</a></li>
-                {% endunless %}
-            {% endfor %}
+            <ol id="archive-listing" class="list-unstyled">
+               {% assign month_names = "placeholder January February March April May June July August September October November December" | split: ' ' %}
+                {% capture yms %}
+                    {% for post in site.posts %}
+                        {{ post.date | date: "%Y-%m" }}
+                    {% endfor %}
+                {% endcapture %}
+                {% assign uniq_yms = yms | split: ' ' | uniq | reverse %}
+                {% for ym in uniq_yms %}
+                    {% assign cur_year = ym | split: '-' | first %}
+                    {% assign month = ym | split: '-' | last %}
+                    {% assign month_number = month | remove: "0" | ceil %}
+                    {% assign month_name = month_names[month_number] %}
+                    {% if cur_year != last_year %}
+                    {% if last_year %}</ol></div>{% endif %}
+                        <div class="archive-years">
+                            <li id="{{ cur_year }}">
+                                <a href="/blog/{{ cur_year }}">{{ cur_year }}</a>
+                            </li>
+                        </div>
+                        <div class="archive-months"><ol class="list-unstyled">
+                    {% endif %}
+                    <li><a href="/blog/{{ cur_year }}/{{ month }}">{{ month_name }}</a></li>
+                    {% assign last_year = cur_year %}
+                {% endfor %}
+                        </ol>
             </ol>
+            <br/>
+            <h4>Tags</h4>
+            <ol class="list-unstyled">
+                {% capture tags %}
+                    {% for tag in site.tags %}
+                        {{ tag[0] }}
+                    {% endfor %}
+                {% endcapture %}
+                {% assign sortedtags = tags | split:' ' | sort %}
+
+                {% for tag in sortedtags %}
+                    <li><a href="/blog/tags/{{ tag }}">{{ tag }}</a></li>
+               {% endfor %}
+           </ol>
         </div>
     </div>
 </div>
+
+<script src="/static/js/archive_text_tree.js"></script>

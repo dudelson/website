@@ -35,3 +35,7 @@
 .blog-pagination {
     padding: 15px 0;
 }
+
+.archive-months li {
+    padding-left: 10px;
+}
