@@ -180,6 +180,9 @@ time {
         margin-top: 0;
         padding-top: 0;
     }
+    #blog-mobile-about {
+        margin: 10px;
+    }
     #blog-main {
         padding-top: 50px;
     }
