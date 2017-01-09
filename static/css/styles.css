@@ -145,14 +145,14 @@ time {
 
 @media (min-width : 320px) and (max-width : 480px) {
     body {
-        text-align: center;
+        text-align: justify;
     }
     #body {
         padding: 0 0 100px 0; /* Height of the footer */
         margin: 0;
     }
     .post-content {
-        text-align: left;
+        /* text-align: left; */
     }
     #navbar {
         margin: 0;
