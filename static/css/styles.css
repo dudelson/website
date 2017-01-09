@@ -28,8 +28,13 @@ table {
 }
 
 #body {
-    padding: 10px;
     padding-bottom: 100px;   /* Height of the footer */
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 #footer {
@@ -150,6 +155,9 @@ time {
     }
     .post-content {
         text-align: left;
+    }
+    #mainpage-content {
+        text-align: justify;
     }
     #navbar {
         margin: 0;
