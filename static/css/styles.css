@@ -154,9 +154,6 @@ time {
     .post-content {
         text-align: left;
     }
-    #mainpage-content {
-        text-align: justify;
-    }
     #navbar {
         margin: 0;
     }
@@ -185,6 +182,11 @@ time {
     }
     #blog-main {
         padding-top: 50px;
+    }
+    .row {
+        padding-left: 10px;
+        padding-right: 10px;
+        margin: 0;
     }
     .desktop-only {
         display: none;
