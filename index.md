@@ -11,8 +11,8 @@ tweak [my system configuration](https://github.com/dudelson/dotfiles) in my free
 time.
 
 My non-technical interests include Japanese language and
-culture, [Aikido](http://cornellaikidoclub.com/), nordic skiing, mnemonics, and
-Buddhism. I also [play the tuba](/static/img/tuba.jpg), and am an avid listener
+culture, [Aikido](http://cornellaikidoclub.com/), and nordic skiing. I
+also [play the tuba](/static/img/tuba.jpg), and am an avid listener
 of [chiptunes](https://bandcamp.com/ubeatlenine).
 
 **Currently I am seeking a technical internship for summer 2017**. Here is my [resume](/static/resume.pdf).
