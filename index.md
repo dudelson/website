@@ -11,11 +11,10 @@ tweak [my system configuration](https://github.com/dudelson/dotfiles) in my free
 time.
 
 My non-technical interests include Japanese language and
-culture, [Aikido](http://cornellaikidoclub.com/), and nordic skiing. I
-also [play the tuba](/static/img/tuba.jpg), and am an avid listener
-of [chiptunes](https://bandcamp.com/ubeatlenine).
+culture, [Aikido](http://cornellaikidoclub.com/), nordic skiing, tuba playing,
+and [chiptunes](https://bandcamp.com/ubeatlenine).
 
-**Currently I am seeking a technical internship for summer 2017**. Here is my [resume](/static/resume.pdf).
+Right now I'm working on [Irmin](https://github.com/mirage/irmin), part of the
+[Mirage OS](https://mirage.io/) project, as an intern for [Google Summer of Code](https://summerofcode.withgoogle.com/).
 
-Right now I'm working on [Gobi](https://github.com/JordanGreissman/gobi), a
-strategy game inspired by Sid Meier's Civilization V.
+My resume can be found [here](/static/resume.pdf).
