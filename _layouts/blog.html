@@ -61,12 +61,12 @@ layout: default
                     {% if last_year %}</ol></div>{% endif %}
                         <div class="archive-years">
                             <li id="{{ cur_year }}">
-                                <a href="/blog/{{ cur_year }}">{{ cur_year }}</a>
+                                <a href="/blog/{{ cur_year }}/">{{ cur_year }}</a>
                             </li>
                         </div>
                         <div class="archive-months"><ol class="list-unstyled">
                     {% endif %}
-                    <li><a href="/blog/{{ cur_year }}/{{ month }}">{{ month_name }}</a></li>
+                    <li><a href="/blog/{{ cur_year }}/{{ month }}/">{{ month_name }}</a></li>
                     {% assign last_year = cur_year %}
                 {% endfor %}
                         </ol>
@@ -82,7 +82,7 @@ layout: default
                 {% assign sortedtags = tags | split:' ' | sort %}
 
                 {% for tag in sortedtags %}
-                    <li><a href="/blog/tags/{{ tag }}">{{ tag }}</a></li>
+                    <li><a href="/blog/tags/{{ tag }}/">{{ tag }}</a></li>
                {% endfor %}
            </ol>
         </div>
