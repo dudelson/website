@@ -1,0 +1,98 @@
+#!/usr/bin/env python3
+
+# TODO:
+#   - aws ec2 keeps recently terminated instances in the list for a while after
+#     they're terminated, which means when we pick a random instance out of the
+#     list on line and assume that this is the running instance, we could be
+#     wrong if there are other recently terminated (or other running) instances
+#     around. We should instead get the running instance associated with the EIP
+#     we want and terminate that one.
+
+''' Usage: deploy_unikernel [options]
+
+Options:
+    -h --help  show this screen
+    --version  show version and exit
+    --test     build test unikernel
+'''
+
+from sys import exit
+from subprocess import run, PIPE, STDOUT, CalledProcessError
+from io import StringIO
+import shlex
+import re
+import time
+
+try:
+    from docopt import docopt
+except ImportError as e:
+    print("[ERROR] This program requires docopt")
+    exit(1)
+
+def err(s):
+    print("[ERROR] {}".format(s))
+    exit(1)
+
+def cmd(lst, cwd=None):
+    last = None
+    for c in lst:
+        print("=> {}".format(c))
+        try:
+            p = run(shlex.split(c), stdout=PIPE, stderr=STDOUT, encoding='utf8', check=True, cwd=cwd)
+            last = p.stdout
+        except CalledProcessError as e:
+            print(e.stdout)
+            err("Command \"{}\" failed with status code {}".format(c, e.returncode))
+    return last
+
+def get_aws_credentials():
+    from os.path import expanduser
+    with open(expanduser('~/.aws/credentials')) as f:
+        m = re.search(r"aws_access_key_id = (?P<id>\S+)\naws_secret_access_key = (?P<secret>\S+)", f.read())
+        d = m.groupdict()
+        return (d['id'], d['secret'])
+
+def get_id(id_str, regex, s):
+    m = re.search(r"\"{}\": \"(?P<id>{})\"".format(id_str, regex), s)
+    try:
+        return m.groupdict()['id']
+    except KeyError as e:
+        err("Could not get {}".format(id_str))
+
+def build_exec_test_unikernel():
+    # python's subprocess.run does not gracefully handle '&&' and '|'
+    cmd(["mirage configure -t unix --net socket --http 8080 --https 4433", "make depend", "make"], cwd="_mirage")
+
+def build_deploy_prod_unikernel():
+    (aws_id, aws_secret) = get_aws_credentials()
+    cmd(["mirage configure -t xen --dhcp=true", "make depend", "make"], cwd="_mirage")
+    s = "stack exec ec2-unikernel -- -o {} -w {} -b dudelson-unikernels ../_mirage/https.xen"
+    ami_id = re.search("ami-\S+", cmd([s.format(aws_id, aws_secret)], cwd="ec2-unikernel")).group(0)
+    old_instance_id = get_id("InstanceId", "i-[a-f0-9]+", cmd(["aws ec2 describe-instances"]))
+    s = "aws ec2 run-instances --image-id {} --count 1 --instance-type t1.micro --security-group-ids sg-c0e9c7bb"
+    new_instance_id = get_id("InstanceId", "i-[a-f0-9]+", cmd([s.format(ami_id)]))
+    while True: # wait until the new instance is running
+        out = cmd(["aws ec2 describe-instances --instance-ids {}".format(new_instance_id)])
+        state = re.search(r"\"Name\": \"(?P<state>\w+)\"", out).groupdict()['state']
+        if state == 'running':
+            break
+        time.sleep(30)
+    eip_id = get_id("AllocationId", ".+", cmd(["aws ec2 describe-addresses"]))
+    cmd(["aws ec2 associate-address --instance-id {} --allocation-id {}".format(new_instance_id, eip_id)])
+    cmd(["aws ec2 terminate-instances --instance-ids {}".format(old_instance_id)])
+
+def main():
+    options = docopt(__doc__) # parse cmdline options
+
+    cmd(["bundle exec jekyll build"])
+    if options['--test']:
+        build_exec_test_unikernel()
+        print("*** TEST BUILD SUCCESSFUL ***")
+    else:
+        build_deploy_prod_unikernel()
+        cmd(["mirage clean"], cwd="_mirage")
+        print("*** DEPLOY SUCCESSFUL ***")
+
+if __name__ == '__main__':
+    main()
+    exit(0)
