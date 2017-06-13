@@ -362,7 +362,7 @@ deploying a new unikernel:
         $ aws ec2 associate-address --instance-id <new-instance> --allocation-id <allocation>
         $ aws ec2 terminate-instances --instance-ids <old-instance>
     
-Of course I've [scripted](https://github.com/dudelson/website/blob/0e86a6c9cc4cf460190be22b2daf2f5989ad7de0/deploy-unikernel) this entire process from stem to stern.
+Of course I've [scripted](https://github.com/dudelson/website/blob/69151e91ab1260404a66bd53479e7b3cff9e1828/deploy-unikernel) this entire process from stem to stern.
 
 And that's it! Go enjoy your new-and-improved unikernel life, tell your friends,
 and maybe write me a build tool that will make this easier.
