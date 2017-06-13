@@ -1,13 +1,5 @@
 #!/usr/bin/env python3
 
-# TODO:
-#   - aws ec2 keeps recently terminated instances in the list for a while after
-#     they're terminated, which means when we pick a random instance out of the
-#     list on line and assume that this is the running instance, we could be
-#     wrong if there are other recently terminated (or other running) instances
-#     around. We should instead get the running instance associated with the EIP
-#     we want and terminate that one.
-
 ''' Usage: deploy_unikernel [options]
 
 Options:
@@ -74,7 +66,7 @@ def build_deploy_prod_unikernel():
     cmd(["mirage configure -t xen --dhcp=true", "make depend", "make"], cwd="_mirage")
     s = "stack exec ec2-unikernel -- -o {} -w {} -b dudelson-unikernels ../_mirage/https.xen"
     ami_id = re.search("ami-\S+", cmd([s.format(aws_id, aws_secret)], cwd="ec2-unikernel")).group(0)
-    old_instance_id = get_id("InstanceId", "i-[a-f0-9]+", cmd(["aws ec2 describe-instances"]))
+    old_instance_id = get_id("InstanceId", "i-[a-f0-9]+", cmd(["aws ec2 describe-addresses"]))
     s = "aws ec2 run-instances --image-id {} --count 1 --instance-type t1.micro --security-group-ids sg-c0e9c7bb"
     new_instance_id = get_id("InstanceId", "i-[a-f0-9]+", cmd([s.format(ami_id)]))
     while True: # wait until the new instance is running
