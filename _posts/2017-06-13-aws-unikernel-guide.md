@@ -1,5 +1,5 @@
 ---
-title: "Hosting Static Websites as Unikernels on Amazon Web Services: A Guide"
+title: "Hosting Static Websites as Unikernels on Amazon Web Services"
 tags: mirage ocaml unikernel
 ---
 
@@ -29,9 +29,9 @@ you're afraid of getting your hands dirty, you might want to wait until the
 tooling matures a bit before attempting this. This guide will work best for you
 if you:
 
-- use some type of *nix. AFAIK this guide should be
+- use some type of *64-bit* *nix. AFAIK this guide should be
   easily followable for all linux and BSD users. I am less sure about OSX users.
-  Windows users: Godspeed.
+  Mirage OS does not have support for Windows.
 - want to host a static website. If you are looking to host some other,
   non-static type of site, or are interested in unikernels for some other reason
   entirely, you will probably still be able to make use of the later parts of
@@ -40,12 +40,12 @@ if you:
 - already have a custom domain for your site. I will not cover how to purchase
   and configure a domain name.
   
-One more thing: most software guides install all needed dependencies in the
+Most software guides install all needed dependencies in the
 first step, but since some of the tools we'll be using are kind of fragile,
 we're going to install them one at a time, verifying that they work as expected
 at each step. That way, if you need to do some tinkering to get things right at
 any point, you can continue to follow the guide afterwards. But for the
-brave/impatient, here's our dependency list:
+brave/impatient, here's what we'll be using:
 
 - Mirage OS, which requires OCaml
 - [certbot](https://certbot.eff.org/) (if you don't have a TLS cert for your domain but want one)
@@ -61,7 +61,7 @@ will be using the Mirage OS libraries and build tool to build our unikernels.
 With Mirage, unikernels are written in OCaml, but as long as you're okay using
 my unikernel code, you don't have to know any OCaml to follow this guide. If
 you are completely new to unikernels, know that there are [other systems](http://unikernel.org/projects/) that you
-can use to do this. However, I have no idea if unikernels build using other
+can use to do this. However, I have no idea if unikernels built using other
 systems will run on AWS, so I suggest you stick to Mirage for now. Follow the
 [install instructions](https://mirage.io/wiki/install) to install OCaml, OPAM,
 and Mirage, then run these commands to test your installation:
@@ -69,7 +69,7 @@ and Mirage, then run these commands to test your installation:
     $ git clone https://github.com/mirage/mirage-skeleton
     $ cd mirage-skeleton/tutorial/hello
     $ mirage configure -t unix
-    $ make depend
+    $ make depend # might take a while
     $ make
     $ ./hello
     2017-06-02 19:47:56 -04:00: INF [application] hello
@@ -83,13 +83,13 @@ can always pop into the #mirage channel on IRC for help troubleshooting your ins
 ### 2. Compile a unikernel for your static site
 Now that we have Mirage installed, we can build a unikernel for our static site!
 Our unikernel is composed of two OCaml source files, `config.ml` and
-`dispatch.ml`, which can be found [here](). These files are nearly identical to
+`dispatch.ml`, which can be found [here](https://github.com/dudelson/davidudelson.com/tree/4006d2cdc70aa712f0e8594a9606570fdbd2c5ff/_mirage). These files are nearly identical to
 the ones in `mirage-skeleton/applications/static_website_tls/`, except I've
 tweaked them a bit to handle URLs with a trailing slash.
 Let's say the static site you want to serve
 is located at `~/mysite/content`. Save the OCaml files as `~/mysite/config.ml`
 and `~/mysite/dispatch.ml`, respectively, then edit line 5 of `config.ml` to
-point to `~/mysite/content`. You also need to copy the directory
+point to `content`. You also need to copy the directory
 `mirage-skeleton/applications/static_website_tls/tls` to `~/mysite/tls`. Because
 our unikernel is configured to automatically redirect HTTP requests to HTTPS, it
 needs some type of TLS certificate to build and run correctly. For now we're
@@ -132,7 +132,7 @@ there are a couple of ways you can go about actually getting your certificate.
 If you are migrating to a unikernel from a self-hosted server, your simplest
 option is probably to install certbot on the server and use `certbot certonly
 --manual --preferred-challenges http`, which will establish your ownership over
-your domain by having your enter commands on the server. If, however, you are migrating from
+your domain by having you enter commands on the server. If, however, you are migrating from
 something like wordpress or github pages (my case) where you don't have control
 of the server, you'll have to run `certbot certonly --manual
 --preferred-challenges dns`, which establishes your ownership over your domain
@@ -166,15 +166,14 @@ Now you have a real TLS certificate to use with your unikernel!
 
 ### 4. Install ec2-unikernel
 Next we are going to install
-the [ec2-unikernel][https://github.com/GaloisInc/ec2-unikernel] tool,
+the [ec2-unikernel](https://github.com/GaloisInc/ec2-unikernel) tool,
 which automates the process
 of uploading and installing unikernels to EC2 as Amazon Machine Images (AMIs).
-You need to have [Haskell](https://www.haskell.org/downloads#stack) and
-[Stack](https://docs.haskellstack.org/en/stable/install_and_upgrade/) installed
-in order to build and run the tool, so install those first if you don't have them
-already. Next, run:
+You need to have [Stack](https://docs.haskellstack.org/en/stable/install_and_upgrade/)
+and the `guestfish` command-line utility installed in order to build and run the
+tool, so install those first if you don't have them already. Next, run:
 
-    $ git clone https://github.com/GaloisInc/ec2-unikernel
+    $ cd ~ && git clone https://github.com/GaloisInc/ec2-unikernel
     $ cd ec2-unikernel
     $ stack init
 
@@ -213,7 +212,7 @@ first if you don't already have one. AWS has a free tier that gives access to S3
 and the least powerful instances on EC2 for one year. That is, you get a free
 year of unikernels!
 
-##### Generate an AWS credential keypair
+#### Generate an AWS credential keypair
 After your account is set up, log in to the control panel
 and click on your name in the top-righthand corner followed by "My Security
 Credentials". Amazon will prompt you to create an IAM user; I didn't bother.
@@ -223,14 +222,16 @@ There's no way to see your secret key again once you do. We'll be giving this
 keypair to the CLI in just a minute, but if you don't want to wait you can copy
 it into a text file or something just to be safe.
 
-##### Install and configure the AWS CLI
-[Install](https://docs.aws.amazon.com/cli/latest/userguide/installing.html)the
+#### Install and configure the AWS CLI
+[Install](https://docs.aws.amazon.com/cli/latest/userguide/installing.html) the
 CLI, then run `aws configure`. Enter your AWS access and private keys from the
-previous step, then pick a default [region](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions). AWS separates its servers into
-regions, and all the configuration we're doing is only valid for one region. So
-once you pick a region, stick to it.
+previous step, and enter "us-west-2" for your region. AWS separates its servers into
+[regions](http://aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions)
+and all the configuration we're doing is only valid for one region.
+Unfortunately, due to a bug in ec2-unikernel, the only region that works right
+now is Oregon, so that's the one we have to use.
 
-##### Make an S3 bucket for our unikernels
+#### Make an S3 bucket for our unikernels
 AWS S3 is just storage. S3 storage is allocated by "bucket". The ec2-unikernel
 tool we installed before will upload our unikernel to an S3 bucket and then
 import it from the bucket into EC2. To make an S3 bucket, run:
@@ -241,12 +242,14 @@ When choosing a bucket name, keep in mind that the bucket namespace is shared by
 your entire region. Make sure to pick a memorable name that's unique to you. For
 example, I named my bucket "dudelson-unikernels".
 
-##### Create the "vmimport" role
+#### Create the "vmimport" role
 This is something that ec2-unikernel needs to be able to import our unikernels
 from S3 into EC2. Follow the instructions [here](https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html#vmimport-service-role) to set it up. The json files
 described in the article are located in the `ec2-unikernel/policies` directory.
+Note that you have to edit the parts of `role-policy.json` that are red in the
+instructions to be the bucket name you chose in the last step.
 
-##### Create a security group for our unikernels
+#### Create a security group for our unikernels
 EC2 instances are controlled by "security groups" which describe what ports
 are open for inbound and outbound network traffic on the instance. The default
 security group that is created when you launch an instance opens only port 22
@@ -267,7 +270,7 @@ entire region.
 
 And now, the main attraction! We've put all the pieces in place, and now we can
 finally deploy our unikernel to AWS. But before we do so, we need to rebuild the
-unikernel for AWS's hypervisor, Xen. This looks very similar to what we did in
+unikernel to target the Xen hypervisor, which is what AWS uses. This looks very similar to what we did in
 step 1:
     
     $ cd ~/mysite
@@ -279,17 +282,21 @@ unikernel can find the default gateway provided by AWS when it's launched on
 EC2. Now we can upload it:
 
     $ cd ~/ec2-unikernel
-    $ stack exec ec2-unikernel -- -o <aws-access-key> -w <aws-private_key> -b <bucket-name> ~/mysite/https.xen
+    $ stack exec ec2-unikernel -- -o `cat ~/.aws/credentials | grep id | cut -d " " -f 3` -w `cat ~/.aws/credentials | grep secret | cut -d " " -f 3` -b <bucket-name> ~/mysite/https.xen
     
 We provide ec2-unikernel with our AWS keypair and the name of the S3 bucket we
-created, which is all it needs to upload and import our unikernel as an AMI.
+created, which is all it needs to upload and import our unikernel as an AMI. If
+the commands to get the AWS keypair don't work on your system, you can just
+enter the credentials manually.
 This takes a while, so now would be a good time to get a drink or something.
 When that's done, the last line of output will be the ID of the new AMI. We use
 that to fire up the instance from the command line:
 
-    $ aws ec2 run-instances --image-id <image-id> --count 1 --instance-type t1.micro --security-groups "<security-group-name>"
+    $ AWS_SEC_ID=`aws ec2 describe-security-groups | grep -C 1 <group_name> | grep GroupId | tr -d '" ,' | cut -d ':' -f 2`
+    $ aws ec2 run-instances --image-id <image-id> --count 1 --instance-type t1.micro --security-group-ids $AWS_SEC_ID
     
-The `<image-id>` should look like "ami-ABCD1234". This should spit out a bunch
+The `<image-id>` should look like "ami-ABCD1234". `<group_name>` is the name of
+the security group you created. This should spit out a bunch
 of json about the instance. Wait about 60 seconds, then run `aws ec2 describe-instances | grep "running"`.
 If your unikernel is up,
 you should get a line of output back. If not, wait a little longer and try
@@ -318,13 +325,11 @@ sure to deploy your new unikernel and reassign the EIP before terminating the
 old one. With all that in mind, let's allocate an EIP and assign it to our
 instance:
 
-    $ aws ec2 allocate-address --domain vpc
-    $ aws ec2 associate-address --instance-id <instance> --allocation-id <allocation>
+    $ ALLOC_ID=`aws ec2 allocate-address --domain vpc | grep "AllocationId" | tr -d '" ,' | cut -d ':' -f 2`
+    $ INST_ID=`aws ec2 describe-instances | grep "InstanceId" | tr -d '" ,' | cut -d ':' -f 2`
+    $ aws ec2 associate-address --instance-id $INST_ID --allocation-id $ALLOC_ID
     
-`<instance>` is the ID of the running instance, and can be found using `aws ec2
-describe-instances | grep ""`. `<allocation>` is the allocation ID output by the
-`allocation-address` command. After assigning an EIP, update the type A DNS
-records for your domain to point to the EIP, and your site is live!
+After assigning an EIP, update the type A DNS records for your domain to point to the EIP, and your site is live!
 
 ### 8. Maintenance
 
@@ -339,22 +344,23 @@ deploying a new unikernel:
   exec jekyll build`.
 - rebuild your unikernel
 
-    $ cd ~/mysite
-    $ mirage configure -t unix --net=socket --http=8080 --https=4433 # test build; OR
-    $ mirage configure -t xen --dhcp=true                            # production build
-    $ make depend && make
+        $ cd ~/mysite
+        $ mirage configure -t unix --net=socket --http=8080 --https=4433 # test build; OR
+        $ mirage configure -t xen --dhcp=true                            # production build
+        $ make depend && make
     
 - upload your unikernel to EC2
 
-    $ cd ~/ec2-unikernel
-    $ stack exec ec2-unikernel -- -o <aws-access-key> -w <aws-private-key> -b <bucket-name>
+        $ cd ~/ec2-unikernel
+        $ stack exec ec2-unikernel -- -o `cat ~/.aws/credentials | grep id | cut -d " " -f 3` -w `cat ~/.aws/credentials | grep secret | cut -d " " -f 3` -b <bucket-name> ~/mysite/https.xen
     
 - launch the unikernel, reallocate the EIP, and terminate the old unikernel 
 
-    $ aws ec2 describe-instances | grep "InstanceId" # get the old image ID
-    $ aws ec2 run-instances --image-id <image-id> --count 1 --instance-type t1.micro --security-groups "<security-group-name>" | grep "InstanceId" # get the new image ID
-    $ aws ec2 associate-address --instance-id <new-instance> --allocation-id <allocation>
-    $ aws ec2 terminate-instances --instance-ids <old-instance>
+        $ aws ec2 describe-instances | grep "InstanceId" # get the old image ID
+        $ aws ec2 run-instances --image-id <image-id> --count 1 --instance-type
+        t1.micro --security-group-ids "<security-group-id>" | grep "InstanceId" # get the new image ID
+        $ aws ec2 associate-address --instance-id <new-instance> --allocation-id <allocation>
+        $ aws ec2 terminate-instances --instance-ids <old-instance>
     
 Of course I've [scripted]() this entire process from stem to stern.
 
