@@ -19,6 +19,7 @@ Options:
 from sys import exit
 from subprocess import run, PIPE, STDOUT, CalledProcessError
 from io import StringIO
+import os.path
 import shlex
 import re
 import time
@@ -29,11 +30,17 @@ except ImportError as e:
     print("[ERROR] This program requires docopt")
     exit(1)
 
+PWD = os.path.dirname(os.path.realpath(__file__))
+
 def err(s):
     print("[ERROR] {}".format(s))
     exit(1)
 
 def cmd(lst, cwd=None):
+    if cwd is not None:
+        cwd = os.path.join(PWD, cwd)
+    else:
+        cwd = PWD
     last = None
     for c in lst:
         print("=> {}".format(c))
@@ -46,8 +53,7 @@ def cmd(lst, cwd=None):
     return last
 
 def get_aws_credentials():
-    from os.path import expanduser
-    with open(expanduser('~/.aws/credentials')) as f:
+    with open(os.path.expanduser('~/.aws/credentials')) as f:
         m = re.search(r"aws_access_key_id = (?P<id>\S+)\naws_secret_access_key = (?P<secret>\S+)", f.read())
         d = m.groupdict()
         return (d['id'], d['secret'])
