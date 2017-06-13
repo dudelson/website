@@ -53,5 +53,6 @@ defaults:
         layout: "post"
 
 ### Build settings
+exclude: [README.md, LICENSE, Gemfile, Gemfile.lock, make_blog_post, deploy-unikernel, ec2-unikernel]
 paginate: 5
 paginate_path: "/blog/page:num/"
