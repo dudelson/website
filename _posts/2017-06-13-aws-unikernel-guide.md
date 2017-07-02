@@ -147,20 +147,25 @@ webserver and certbot on the instance, copy over your static site files and
 serve the site, and then use `certbot certonly --manual --preferred-challenges
 http` to get your cert. Your choice! In any case, make sure you set
 `--config-dir`, `--work-dir`, and `--logs-dir` to writeable paths so that you
-don't have to run the script as root, and `-d example.com` to specify the
+don't have to run the script as root (these are given relative to the present
+working directory, *don't* use absolute paths), and `-d example.com` to specify the
 domains you want certificates for. See the
 [certbot manual](https://certbot.eff.org/docs/using.html#getting-certificates-and-choosing-plugins)
 if you are unsure or would like more information. So, to summarize, in my case I
 ran:
 
-    $ certbot certonly -d davidudelson.com -d www.davidudelson.com --manual --preferred-challenges dns --config-dir ~/letsencrypt --work-dir ~/letsencrypt --logs-dir ~/letsencrypt
+    $ cd ~ && certbot certonly -d davidudelson.com -d www.davidudelson.com --manual --preferred-challenges dns --config-dir .local/letsencrypt --work-dir .local/letsencrypt/work --logs-dir .local/letsencrypt/logs
     
-to generate my certificate. Once you have yours, copy over the appropriate
+to generate my certificate. Once you have yours, it's time to update our
+unikernel's tls certs to match. It's a good idea not to move any files in the
+directory that certbot placed your certs in, because this might prevent certbot
+from updating your certs in the future. Instead, let's make symlinks to the
+`live` directory (which always contains the up-to-date certificates)
 files:
 
-    $ cp ~/letsencrypt/live/example.com/privkey.pem ~/mysite/tls/server.key
-    $ cp ~/letsencrypt/live/example.com/cert.pem ~/mysite/tls/server.pem
-    $ cp ~/letsencrypt/live/example.com/chain.pem ~/mysite/tls/ca-roots.crt
+    $ ln -s ~/.local/letsencrypt/live/example.com/privkey.pem ~/mysite/tls/server.key
+    $ ln -s ~/.local/letsencrypt/live/example.com/cert.pem ~/mysite/tls/server.pem
+    $ ln -s ~/.local/letsencrypt/live/example.com/chain.pem ~/mysite/tls/ca-roots.crt
     
 Now you have a real TLS certificate to use with your unikernel!
 
