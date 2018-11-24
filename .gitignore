@@ -1,15 +1,8 @@
 _site
-_mirage/tls
 .sass-cache
 .DS_Store
 Thumbs.db
 db.json
 *.log
-node_modules/
 public/
 .deploy*/%  
-
-# Elastic Beanstalk Files
-.elasticbeanstalk/*
-!.elasticbeanstalk/*.cfg.yml
-!.elasticbeanstalk/*.global.yml
