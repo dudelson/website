@@ -32,7 +32,7 @@ Dir.mkdir(dates_folder_path) unless File.exists?(dates_folder_path)
 
 # Read Tags into array
 tags = []
-taglist_path = File.expand_path("../../../_site/blog/archive/taglist.txt", __FILE__)
+taglist_path = File.expand_path("../../../../_site/blog/archive/taglist.txt", __FILE__)
 File.open(taglist_path, 'r') do |f|
     while tag = f.gets
         tag = tag.strip
@@ -41,7 +41,7 @@ File.open(taglist_path, 'r') do |f|
 end
 # Read Dates into array
 dates = []
-datelist_path = File.expand_path("../../../_site/blog/archive/datelist.txt", __FILE__)
+datelist_path = File.expand_path("../../../../_site/blog/archive/datelist.txt", __FILE__)
 File.open(datelist_path, 'r') do |f|
     while date = f.gets
         date = date.strip
