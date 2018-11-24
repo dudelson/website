@@ -1,0 +1,33 @@
+---
+layout: default
+---
+<div class="row">
+    <div id="col-xs-12 col-sm-12 col-md-8">
+        <div id="post-header">
+            <h1>{{ page.title }}</h1>
+            <time>{{ page.date | date: "%B %-d, %Y" }}</time><br/>
+            <div id="post-tags"> Tags:
+                {% for tag in page.tags %}
+                    <a href="/blog/tags/{{ tag }}/">{{ tag }}</a>
+                {% endfor %}
+            </div>
+        </div>
+        <hr/>
+        <div class="post-content">{{ content }}</div>
+        <hr/>
+        <div id="post-comments">
+            <p><i>
+                For technical reasons, comments are temporarily unavailable on my posts.
+                If you'd like to discuss this article with me, feel
+                free to email me at
+                {% include email_obfuscator.html %}
+                or hit me up on
+                <a href="{{ site.contact.twitter }}">Twitter</a>.
+            </i></p>
+       </div>
+       <div id="post-buttons">
+           <a class="btn btn-default" href="/blog/">Read More Posts</a>
+           <a class="btn btn-default" href="#post-header">Top</a>
+       </div>
+    </div>
+</div>

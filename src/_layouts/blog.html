@@ -1,0 +1,63 @@
+---
+layout: default
+---
+<div id="blog-header">
+    <a href="/blog/"><h1 id="blog-title">{{ site.blog.title }}</h1></a>
+    <p id="blog-description">{{ site.blog.subtitle }}</p>
+    <div class="mobile-only"><p id="mobile-blog-about">{{ site.about_short }}</p></div>
+</div>
+<div class="desktop-only"><hr/></div>
+<div class="row">
+    <div id="blog-main" class="col-xs-12 col-sm-12 col-md-9">
+        {{ content }}
+    </div>
+    <div id="blog-sidebar" class="col-xs-6 col-sm-6 col-md-3 desktop-only">
+        <div class="rss">
+            <a href="/blog/feed.xml" ><img class="img-responsive" src="/static/img/logos/rss.png"></a>
+        </div>
+        <div class="sidebar-module">
+            <h4>Archives</h4>
+            <ol id="archive-listing" class="list-unstyled">
+               {% assign month_names = "placeholder January February March April May June July August September October November December" | split: ' ' %}
+                {% capture yms %}
+                    {% for post in site.posts %}
+                        {{ post.date | date: "%Y-%m" }}
+                    {% endfor %}
+                {% endcapture %}
+                {% assign uniq_yms = yms | split: ' ' | uniq | reverse %}
+                {% for ym in uniq_yms %}
+                    {% assign cur_year = ym | split: '-' | first %}
+                    {% assign month = ym | split: '-' | last %}
+                    {% assign month_number = month | remove: "0" | ceil %}
+                    {% assign month_name = month_names[month_number] %}
+                    {% if cur_year != last_year %}
+                    {% if last_year %}</ol></div>{% endif %}
+                        <div class="archive-years">
+                            <li id="{{ cur_year }}">
+                                <a href="/blog/{{ cur_year }}/">{{ cur_year }}</a>
+                            </li>
+                        </div>
+                        <div class="archive-months"><ol class="list-unstyled">
+                    {% endif %}
+                    <li><a href="/blog/{{ cur_year }}/{{ month }}/">{{ month_name }}</a></li>
+                    {% assign last_year = cur_year %}
+                {% endfor %}
+                        </ol>
+            </ol>
+            <br/>
+            <h4>Tags</h4>
+            <ol class="list-unstyled">
+                {% capture tags %}
+                    {% for tag in site.tags %}
+                        {{ tag[0] }}
+                    {% endfor %}
+                {% endcapture %}
+                {% assign sortedtags = tags | split:' ' | sort %}
+
+                {% for tag in sortedtags %}
+                    <li><a href="/blog/tags/{{ tag }}/">{{ tag }}</a></li>
+               {% endfor %}
+           </ol>
+        </div>
+    </div>
+</div>

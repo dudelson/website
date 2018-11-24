@@ -1,0 +1,129 @@
+==================================================================
+https://keybase.io/dudelson
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://davidudelson.com
+  * I am dudelson (https://keybase.io/dudelson) on keybase.
+  * I have a public key ASCFukV2GZLN1gqrjyLuW37sEpa60iK_s-P95FRNz_fKkgo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "012085ba45761992cdd60aab8f22ee5b7eec1296bad222bfb3e3fde4544dcff7ca920a",
+      "host": "keybase.io",
+      "kid": "012085ba45761992cdd60aab8f22ee5b7eec1296bad222bfb3e3fde4544dcff7ca920a",
+      "uid": "4764e59796c808925bb75ac417ff6219",
+      "username": "dudelson"
+    },
+    "merkle_root": {
+      "ctime": 1532396645,
+      "hash": "0e3e0bf8a89c55578280c87a67d2bf4d28a730b198848ec7c322ac755512acaba6339d3fc6c77484e256b8b5788af24ee00fa879c841cb3bac54dbdefc9b9e91",
+      "hash_meta": "aa0d79377223c5137af222e15cbd173d8ec8b8b2bd389ad89f1492aa8d9398e6",
+      "seqno": 3319088
+    },
+    "service": {
+      "entropy": "dzSetL7+i6Pc/xU0t98cBSoc",
+      "hostname": "davidudelson.com",
+      "protocol": "http:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "2.4.0"
+  },
+  "ctime": 1532396665,
+  "expire_in": 504576000,
+  "prev": "eee21bc7b728f11c8a222aaa33c6e3dc4fe5ec651320f5f7eb2b7dc87a075d06",
+  "seqno": 8,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEghbpFdhmSzdYKq48i7lt+7BKWutIiv7Pj/eRUTc/3ypIKp3BheWxvYWTESpcCCMQg7uIbx7co8RyKIiqqM8bj3E/l7GUTIPX36yt9yHoHXQbEIN8G+FahDFMsCXElicUHQsu9CFQh5HYv/I8eNnUT1t5AAgHCo3NpZ8RAdYnuVrbCd8hr3yRAIZe97SHg9BKhonSIPneuxTFDgJIgH/A/MyaKV/f7upuogbI7Leg8rknzPmhzYqomFc5GB6hzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEINQpu7hys6RuSYkQ6vawXTr5baix/vle169gdbabQiSVo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/dudelson
+
+==================================================================
+==================================================================
+https://keybase.io/dudelson
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://www.davidudelson.com
+  * I am dudelson (https://keybase.io/dudelson) on keybase.
+  * I have a public key with fingerprint 5AE0 039D 1833 5B41 DD0C  C399 665B 2262 1D17 5146
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "012085ba45761992cdd60aab8f22ee5b7eec1296bad222bfb3e3fde4544dcff7ca920a",
+      "fingerprint": "5ae0039d18335b41dd0cc399665b22621d175146",
+      "host": "keybase.io",
+      "key_id": "665b22621d175146",
+      "kid": "0101bd09342543558dbd23230e12cbc10378a415deb3e1a5b280bebc8239e93e65cf0a",
+      "uid": "4764e59796c808925bb75ac417ff6219",
+      "username": "dudelson"
+    },
+    "service": {
+      "hostname": "www.davidudelson.com",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1543022620,
+  "expire_in": 157680000,
+  "prev": "be28d6b01f72c11b2e6b247d9ce24396292f51f2c6cb4c79290523b3e10b7a34",
+  "seqno": 25,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+
+owFtUn1MVWUcvoCgQBahIgg07hkQK8Rz3vN9JzYlbXy4KYuZXMflvOe8Bw5wP7yf
+MsZiNeWjEcwWLRLmKIii0SgBkSQEdAo1wJhQWdI1LOMzoUUQ0rlM/uv959372/M8
+v+f3vL/q7T6abV6yHoORu48f8Rp6CDX65eboIgyapUJMV4Tlo40LFUjIZjfkKxKm
+w3AC4BwNBYpmGYLngShJDC4IkJMBQIiGLEIiAXgGChIAAMqQRKQsIYqmKEmUZVYU
+eIALWDwmK6YcZLVYFZNdlaUFhOMkLxEcSdKQIiQJF0WS5xmGhgAwgJAIliYoRiXm
+mm0ehmoOCjaUoJjVmvowbNj7H/ymb5yAEs6TFKApkqY5CUqABCSOCCBCkcBJlhMo
+gpaQ6pgQVBUOhwiKHCB5xJOIoUV5w7djQ45iGQrRPMszIodzPKAhZGlBpAhWltXu
+vAdoQ1aTYEQqWnJIqMBmNmHF8ZhadSoi8gTrmeQJwuVyJUiCU9lEJohmo6phsZrt
+ZtFcoCJy7XaLTedRsBdaNigIGp6IGaBiktQ8VYYTWW2K2klHqEjRrnjUCXVi3JMK
+Ho+hMxbFigyKB6F+IYerx9MHOTGdgEEEOImBOCGzQCQICBADAcVKvIgARfIM4IFM
+EzIQGRFSIssDHqcB6UkMh6xAUphnvtMmM6YDtGpUyFF92pQck2B3WBFWHFDuTW7R
+eG3TRIZot2RO+tSFkvqDPz3V//7mEvp6ezZQE+AftFkZ1j+zbo7pVH6ZzvXvu1yP
+B4dEpm49+M2s5nxL6ErD7ANqdGh+T8ixcysVvpVrbRm8SfFjC8iFX/eX/z622Fpb
+kjUVO6YtCKttnJ7pEnZdbPlz/Wbtd99/cSnc6P/8XOCX0yv9k/+uTxYN7sseenUB
+Cwo3RpbNXf7aSvZ3DnQo7rNl1D3/7O3PzV3n9PVJcfkR2Aullr0V5enCwAcPTxw/
+tr+u7at5uus2FbXsaur98VzFo5Hkz/XJyX51iSW+dVejJuhB12tpVf59xW1h1429
+p5bI9ty1iLSikcJTe6Ky4Lh2R3aNs+Zq3NuzYuPcO08P/pYxZQ9O+LshemfQ/XeD
+j8QcNb45OtLtk+G4ltSBviWoVya6//q56QzoPp24dyZ4aTE663CLpqckvTX1sXem
+4+WkXaXXZkJTJo6GzPZ9GOcOcs5F/DPwVm+c3tXT5cibT7ZOjGfWfBR79llofuNQ
+Q7OppDbLvRyjGa5a1dz6wd3+WWO1G8ELjxd3uBObG5r8coq8qmtj8i4O9+TrVyY7
+DQfqAwdvU6tVdwpHy1LyFsIDH9WOazPeCyhZPZxTudP+6VhK+if3dkcLPoF1V1za
+rOyT5pMn7pjuZlYfClt60HwAlSYaUWxrZYfo0g5vrZh63Xvqxn1unzEAGFIvkb43
+sKSP0+5ycy9Ntd1MeJG6kH/LdaV9vGJ47Y//AA==
+=Aqut
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/dudelson
+
+==================================================================

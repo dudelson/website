@@ -1,3 +1,0 @@
-[submodule "ec2-unikernel"]
-	path = ec2-unikernel
-	url = https://github.com/GaloisInc/ec2-unikernel

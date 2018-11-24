@@ -1,0 +1,17 @@
+---
+layout: default
+---
+<div class="row">
+    <div class="col-md-12" style="padding-bottom: 60px">
+        <h1>Home</h1>
+        <hr/>
+        <div id="page-content">{{ content }}</div>
+        <div class="desktop-only"><br/><br/></div>
+        <h1>From My Blog</h1>
+        <hr/>
+        {% for post in site.posts limit:3 %}
+        {% include blog_post_listing_item.html %}
+        {% endfor %}
+        <a class="btn btn-outline-primary" href="/blog/">More Posts</a>
+    </div>
+</div>

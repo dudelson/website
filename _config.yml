@@ -1,4 +1,5 @@
-gems: [jekyll-paginate]
+plugins: [jekyll-paginate]
+source: src/
 
 ### Github settings
 # These settings are automatically forced by github anyway,
@@ -30,10 +31,12 @@ emacs uva competitive programming"
 
 ### Blog config
 excerpt_separator: <!--more-->
-about_short: Computer nerd, aikidoka, tubist, and japanophile. I will sometimes post articles here, and they will probably be mostly about software.
+about_short: "Hi, I'm David. Sometimes when I have an idea I mash my keyboard
+and then post the result. Here you can find keyboard mashings about my life,
+computers, and other stuff."
 blog:
-    title: Probably Mostly Software
-    subtitle: "A code enthusiast's blog"
+    title: "Keyboard Mashings"
+    subtitle: "Just a guy with a keyboard and some opinions"
 
 ### Concact info
 contact:
@@ -41,7 +44,6 @@ contact:
     linkedin: "https://www.linkedin.com/in/david-udelson-6aa323123"
     github: "https://github.com/dudelson/"
     twitter: "https://twitter.com/dudelson_/"
-    telegram: "https://t.me/dudelson"
 
 ### Front Matter defaults
 defaults:

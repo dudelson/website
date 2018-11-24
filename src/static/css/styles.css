@@ -1,0 +1,239 @@
+/* styles for the default layout (_layouts/default.html) */
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: 'Cabin', sans-serif;
+}
+
+html {
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    /* both of these are needed for the footer to work correctly */
+    position: relative;
+    min-height: 100%;
+}
+
+/* table { */
+/*     table-layout: fixed; */
+/* } */
+
+/* #thingy { */
+/*     min-height: 100%; */
+/*     position: relative; */
+/* } */
+
+#navbar {
+    font-family: sans-serif;
+    font-size: 18px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+#content {
+    /* just to separate the content from the navbar a little more,
+       so it doesn't look so cramped */
+    padding-top: 20px;
+    /* needed for the footer to not hide page content */
+    padding-bottom: 165px; /* height of the footer */
+}
+
+#footer {
+    position:absolute;
+    bottom: 0;
+    width: 100%;
+    height: 165px;   /* Height of the footer */
+    overflow: hidden; /* necessary??? */
+    padding: 20px 0;
+    color: #999;
+    line-height: 20px; /* Vertically center the text there */
+    text-align: center;
+    background-color: #f9f9f9;
+    border-top: 1px solid #e5e5e5;
+}
+
+#footer-social-links > a:link {
+    color: #999;
+}
+
+#footer-social-links > a:visited {
+    color: #999;
+}
+
+#footer-social-links > a:hover {
+    color: #999;
+    text-decoration: none;
+}
+
+#footer-social-links > a:active {
+    color: #999;
+}
+
+/* styles for the blog layout (_layouts/blog.html) */
+
+#blog-header {
+    padding: 0;
+}
+
+#blog-title {
+    font-size: 60px;
+    color: #333;
+}
+
+#blog-description {
+    font-size: 20px;
+    color: #999;
+}
+
+#blog-main {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+#post-header {
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+/* blog post listing item styles */
+
+.post-header div {
+    font-size: 14px;
+}
+
+time {
+    font-style: italic;
+    /* font-size: 14px; */
+    color: #999;
+    margin-bottom: 15px;
+}
+
+.post-content {
+    padding: 10px 0 10px 0;
+    font-size: 18px;
+}
+
+/* ============================= */
+
+#post-header div {
+    padding-top: 10px;
+}
+
+#post-content {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+#post-comments {
+    padding-top: 15px;
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+#post-buttons {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+#post-buttons a {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+/* Sidebar modules for boxing content */
+.sidebar-module {
+    padding: 15px;
+}
+
+.sidebar-module-inset {
+    padding: 15px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+}
+
+.blog-pagination {
+    padding: 15px 0;
+}
+
+.archive-months li {
+    padding-left: 10px;
+}
+
+/* hide the mobile-specific stuff by default (unless overridden by a media query) */
+.mobile-only {
+    display: none;
+}
+
+/*
+ * CSS for mobile devices
+ */
+
+/* @media (min-width : 320px) and (max-width : 1024px) { */
+/*     body { */
+/*         text-align: center; */
+/*     } */
+/*     #body { */
+/*         padding: 0 0 120px 0; /\* Height of the footer *\/ */
+/*         margin: 0; */
+/*     } */
+/*     div.post-content { */
+/*         text-align: justify; */
+/*     } */
+/*     #navbar { */
+/*         margin: 0; */
+/*     } */
+/*     #navbar ul { */
+/*         margin-top: 15px; */
+/*     } */
+/*     .mobile-nav-img { */
+/*         width: 30px; */
+/*     } */
+/*     #mobile-nav-headshot { */
+/*         display: inline; */
+/*     } */
+/*     .blog-post { */
+/*         padding-top: 15px; */
+/*         padding-bottom: 15px; */
+/*     } */
+/*     #blog-header { */
+/*         background-color: #333; */
+/*         color: #fff; */
+/*         padding: 30px 0 30px 0; */
+/*     } */
+/*     #blog-title { */
+/*         color: #fff; */
+/*         margin-top: 0; */
+/*         padding-top: 0; */
+/*     } */
+/*     #mobile-blog-about { */
+/*         padding: 0 30px 0 30px; */
+/*         font-style: italic; */
+/*     } */
+/*     #blog-main { */
+/*         padding-top: 50px; */
+/*     } */
+/*     .row { */
+/*         padding-left: 10px; */
+/*         padding-right: 10px; */
+/*         margin: 0; */
+/*     } */
+/*     .desktop-only { */
+/*         display: none; */
+/*     } */
+/*     .mobile-only { */
+/*         display: initial; */
+/*     } */
+/* } */
+
+/*
+ * Override Bootstrap's default container.
+ */
+
+/* @media (min-width: 1024px) { */
+/*   .container { */
+/*     width: 1050px; */
+/*   } */
+/*   .desktop-only { */
+/*       display: initial; */
+/*   } */
+/*   .mobile-only { */
+/*       display: none; */
+/*   } */
+/* } */
