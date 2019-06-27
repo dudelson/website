@@ -3,7 +3,7 @@ layout: page
 title: Projects
 ---
 
-# Personal Projects
+## Personal Projects
 
 My personal projects are open-source and can be found on
 [github](https://github.com/dudelson/).
@@ -16,7 +16,7 @@ Right now it is a terminal game, so the graphics are pretty
 crude, but once I clean up the codebase I plan to port it to the web using
 [ReasonReact](https://reasonml.github.io/reason-react/en/).
 
-# Academic Projects
+## Academic Projects
 
 I also have a few academic projects, including:
 
@@ -33,7 +33,7 @@ For academic integrity reasons, these projects are closed-source. However, if
 you would like to view the source code for any of these projects, do not
 hesitate to [contact me](/contact).
 
-# Odds and Ends
+## Odds and Ends
 
 I have a separate page dedicated to
 [what I'm working on now](/now).
