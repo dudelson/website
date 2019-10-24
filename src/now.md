@@ -27,3 +27,5 @@ I am also solidifying my knowledge of python and am trying to get a better grip
 on emacs lisp, since I use that a lot but don't understand it at all.
 
 This page was inspired by Derek Sivers' [nownownow project](https://nownownow.com/about).
+
+filestash test
