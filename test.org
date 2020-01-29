@@ -1,0 +1,14 @@
+* tasks
+** Digital Infrastructure
+*** TODO [#B] update capture template to reflect changes to structure of current.org       :quick:
+:LOGBOOK:
+- Refiled on [2019-08-28 Wed 19:59]
+- State "TODO"       from              [2019-08-07 Wed 09:32]
+:END:
+*** TODO commit changes to dotfiles
+:LOGBOOK:
+- Refiled on [2019-08-25 Sun 16:55]
+- State "TODO"       from              [2019-08-07 Wed 19:43]
+:END:
+
+* programming notes
