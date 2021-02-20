@@ -6,7 +6,7 @@ h1,h2,h3,h4,h5,h6 {
 
 html {
     font-family: 'Raleway', sans-serif;
-    font-size: 16px;
+    font-size: 18px;
     /* both of these are needed for the footer to work correctly */
     position: relative;
     min-height: 100%;
@@ -25,6 +25,11 @@ html {
     font-family: sans-serif;
     font-size: 18px;
     border-bottom: 1px solid #e5e5e5;
+}
+
+.nav-item {
+    margin-left: 0.50rem;
+    margin-right: 0.50rem;
 }
 
 #content {
@@ -49,20 +54,20 @@ html {
     border-top: 1px solid #e5e5e5;
 }
 
-#footer-social-links > a:link {
+.navbar-social-link > a:link {
     color: #999;
 }
 
-#footer-social-links > a:visited {
+.navbar-social-link > a:visited {
     color: #999;
 }
 
-#footer-social-links > a:hover {
+.navbar-social-link > a:hover {
     color: #999;
     text-decoration: none;
 }
 
-#footer-social-links > a:active {
+.navbar-social-link > a:active {
     color: #999;
 }
 

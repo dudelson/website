@@ -1,17 +1,63 @@
 ---
 layout: default
 ---
-<div class="row">
-    <div class="col-md-12" style="padding-bottom: 60px">
-        <h1>Home</h1>
-        <hr/>
-        <div id="page-content">{{ content }}</div>
-        <div class="desktop-only"><br/><br/></div>
-        <h1>From My Blog</h1>
-        <hr/>
-        {% for post in site.posts limit:3 %}
-        {% include blog_post_listing_item.html %}
-        {% endfor %}
-        <a class="btn btn-outline-primary" href="/blog/">More Posts</a>
+<!-- heading -->
+<div class="row justify-content-md-center">
+    <div class="col-md-9">
+        <h2 style="text-align: center">👋 Hi, I'm David.</h2>
     </div>
 </div>
+
+<!-- image -->
+<div class="row justify-content-md-center">
+    <div class="col-md-3 desktop-only" >
+        <img width="100%"
+            class="img-responsive rounded-circle"
+            src="/static/img/headshot.jpg"
+            alt="David Udelson"
+            style="padding-top: 1.25rem; padding-bottom: 1.25rem"
+        />
+    </div>
+</div>
+
+<!-- content -->
+<div class="row justify-content-md-center">
+    <div class="col-md-9">
+        <div id="page-content">{{ content }}</div>
+    </div>
+</div>
+
+<!-- article showcase -->
+<!-- <div class="row justify-content-md-center" >
+     <div class="col-md-9" >
+     <h2>Popular Articles</h2>
+     </div>
+     </div> -->
+<!-- <div class="row justify-content-md-center" >
+     <div class="col-md-3" >
+     <h2>Article One</h2>
+     <p>Descr one.</p>
+     </div>
+     <div class="col-md-3" >
+     <h2>Article two</h2>
+     <p>Descr two.</p>
+     </div>
+     <div class="col-md-3" >
+     <h2>Article three</h2>
+     <p>Descr three.</p>
+     </div>
+     </div> -->
+
+
+
+<!-- <div class="row">
+     <div class="col-md-12" style="padding-bottom: 60px">
+     <h1>Home</h1>
+     <hr/>
+     <div id="page-content">{{ content }}</div>
+     <div class="desktop-only"><br/><br/></div>
+     <h1>From My Blog</h1>
+     <hr/>
+     <a class="btn btn-outline-primary" href="/blog/">More Posts</a>
+     </div>
+     </div> -->

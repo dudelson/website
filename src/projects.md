@@ -37,3 +37,5 @@ hesitate to [contact me](/contact).
 
 I have a separate page dedicated to
 [what I'm working on now](/now).
+
+If you'd like to view my resume, you can find it [here](/static/content/resume.pdf).
