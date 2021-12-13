@@ -20,7 +20,7 @@ whitelist:
 
 ### Site config
 baseurl: "" 
-url: "http://davidudelson.com/"
+url: "https://davidudelson.com"
 permalink: /blog/:year/:month/:day/:title/
 # these variables are used by _includes/head.html to provide metadata about the site
 locale: en_US
