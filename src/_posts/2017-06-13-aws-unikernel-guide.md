@@ -39,7 +39,7 @@ if you:
   will look significantly different, and for that part you're on your own.
 - already have a custom domain for your site. I will not cover how to purchase
   and configure a domain name.
-  
+
 Most software guides install all needed dependencies in the
 first step, but since some of the tools we'll be using are kind of fragile,
 we're going to install them one at a time, verifying that they work as expected
@@ -66,24 +66,28 @@ systems will run on AWS, so I suggest you stick to Mirage for now. Follow the
 [install instructions](https://mirage.io/wiki/install) to install OCaml, OPAM,
 and Mirage, then run these commands to test your installation:
 
-    $ git clone https://github.com/mirage/mirage-skeleton
-    $ cd mirage-skeleton/tutorial/hello
-    $ mirage configure -t unix
-    $ make depend # might take a while
-    $ make
-    $ ./hello
-    2017-06-02 19:47:56 -04:00: INF [application] hello
-    2017-06-02 19:47:57 -04:00: INF [application] hello
-    2017-06-02 19:47:58 -04:00: INF [application] hello
-    2017-06-02 19:47:59 -04:00: INF [application] hello
-    
+```
+$ git clone https://github.com/mirage/mirage-skeleton
+$ cd mirage-skeleton/tutorial/hello
+$ mirage configure -t unix
+$ make depend # might take a while
+$ make
+$ ./hello
+2017-06-02 19:47:56 -04:00: INF [application] hello
+2017-06-02 19:47:57 -04:00: INF [application] hello
+2017-06-02 19:47:58 -04:00: INF [application] hello
+2017-06-02 19:47:59 -04:00: INF [application] hello
+```
+
 If you get output similar to above, then your installation works! If not, you
 can always pop into the #mirage channel on IRC for help troubleshooting your installation.
 
 ### 2. Compile a unikernel for your static site
 Now that we have Mirage installed, we can build a unikernel for our static site!
 Our unikernel is composed of two OCaml source files, `config.ml` and
-`dispatch.ml`, which can be found [here](https://github.com/dudelson/davidudelson.com/tree/4006d2cdc70aa712f0e8594a9606570fdbd2c5ff/_mirage). These files are nearly identical to
+`dispatch.ml`, which can be found
+[here](https://github.com/dudelson/davidudelson.com/tree/4006d2cdc70aa712f0e8594a9606570fdbd2c5ff/_mirage).
+These files are nearly identical to
 the ones in `mirage-skeleton/applications/static_website_tls/`, except I've
 tweaked them a bit to handle URLs with a trailing slash.
 Let's say the static site you want to serve
@@ -99,15 +103,17 @@ Let's Encrypt. If you just want a HTTP-only server, you are free to modify the
 code yourself, but you should really be using TLS! With the certificate copied,
 now run:
 
-    $ cd ~/mysite
-    $ mirage configure -t unix --net=socket --http=8080 --https=4433
-    $ make depend && make
-    $ ./https
-    2017-06-02 20:04:47 -04:00: INF [tcpip-stack-socket] Manager: connect
-    2017-06-02 20:04:47 -04:00: INF [tcpip-stack-socket] Manager: configuring
-    2017-06-02 20:04:47 -04:00: INF [https] listening on 4433/TCP
-    2017-06-02 20:04:47 -04:00: INF [http] listening on 8080/TCP
-    
+```
+$ cd ~/mysite
+$ mirage configure -t unix --net=socket --http=8080 --https=4433
+$ make depend && make
+$ ./https
+2017-06-02 20:04:47 -04:00: INF [tcpip-stack-socket] Manager: connect
+2017-06-02 20:04:47 -04:00: INF [tcpip-stack-socket] Manager: configuring
+2017-06-02 20:04:47 -04:00: INF [https] listening on 4433/TCP
+2017-06-02 20:04:47 -04:00: INF [http] listening on 8080/TCP
+```
+
 These commands should generate a lot of output, the last of which is displayed
 above. You should now be able to open `http://localhost:8080` in your browser,
 which will redirect you to `https://localhost:4433` and then block you from
@@ -154,8 +160,11 @@ domains you want certificates for. See the
 if you are unsure or would like more information. So, to summarize, in my case I
 ran:
 
-    $ cd ~ && certbot certonly -d davidudelson.com -d www.davidudelson.com --manual --preferred-challenges dns --config-dir .local/letsencrypt --work-dir .local/letsencrypt/work --logs-dir .local/letsencrypt/logs
-    
+```
+$ cd ~ && certbot certonly -d davidudelson.com -d www.davidudelson.com --manual --preferred-challenges dns \
+--config-dir .local/letsencrypt --work-dir .local/letsencrypt/work --logs-dir .local/letsencrypt/logs
+```
+
 to generate my certificate. Once you have yours, it's time to update our
 unikernel's tls certs to match. It's a good idea not to move any files in the
 directory that certbot placed your certs in, because this might prevent certbot
@@ -163,10 +172,12 @@ from updating your certs in the future. Instead, let's make symlinks to the
 `live` directory (which always contains the up-to-date certificates)
 files:
 
-    $ ln -s ~/.local/letsencrypt/live/example.com/privkey.pem ~/mysite/tls/server.key
-    $ ln -s ~/.local/letsencrypt/live/example.com/cert.pem ~/mysite/tls/server.pem
-    $ ln -s ~/.local/letsencrypt/live/example.com/chain.pem ~/mysite/tls/ca-roots.crt
-    
+```
+$ ln -s ~/.local/letsencrypt/live/example.com/privkey.pem ~/mysite/tls/server.key
+$ ln -s ~/.local/letsencrypt/live/example.com/cert.pem ~/mysite/tls/server.pem
+$ ln -s ~/.local/letsencrypt/live/example.com/chain.pem ~/mysite/tls/ca-roots.crt
+```
+
 Now you have a real TLS certificate to use with your unikernel!
 
 ### 4. Install ec2-unikernel
@@ -178,9 +189,11 @@ You need to have [Stack](https://docs.haskellstack.org/en/stable/install_and_upg
 and the `guestfish` command-line utility installed in order to build and run the
 tool, so install those first if you don't have them already. Next, run:
 
-    $ cd ~ && git clone https://github.com/GaloisInc/ec2-unikernel
-    $ cd ec2-unikernel
-    $ stack init
+```
+$ cd ~ && git clone https://github.com/GaloisInc/ec2-unikernel
+$ cd ec2-unikernel
+$ stack init
+```
 
 Now normally we would run `stack build --install-ghc` to build the tool, but unfortunately at
 the time of writing, this package is a little bit broken, and it doesn't compile
@@ -191,10 +204,12 @@ earlier version of the `amazonka-*` set of packages, which required me to
 both choose a resolver for stack that had the
 versions of the packages I wanted and rollback the tool to an earlier version:
 
-    $ git checkout 4d28b4c
-    $ stack config set resolver "lts-7.22"
-    $ stack build --install-ghc
-    
+```
+$ git checkout 4d28b4c
+$ stack config set resolver "lts-7.22"
+$ stack build --install-ghc
+```
+
 Once the tool builds correctly, the command `stack exec ec2-unikernel` should
 print out some error message. It fails because we haven't set up AWS yet, which
 is what we're gonna do next!
@@ -241,15 +256,19 @@ AWS S3 is just storage. S3 storage is allocated by "bucket". The ec2-unikernel
 tool we installed before will upload our unikernel to an S3 bucket and then
 import it from the bucket into EC2. To make an S3 bucket, run:
 
-    $ aws s3 mb s3://<bucket-name>
-    
+```
+$ aws s3 mb s3://<bucket-name>
+```
+
 When choosing a bucket name, keep in mind that the bucket namespace is shared by
 your entire region. Make sure to pick a memorable name that's unique to you. For
 example, I named my bucket "dudelson-unikernels".
 
 #### Create the "vmimport" role
 This is something that ec2-unikernel needs to be able to import our unikernels
-from S3 into EC2. Follow the instructions [here](https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html#vmimport-service-role) to set it up. The json files
+from S3 into EC2. Follow the instructions
+[here](https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html#vmimport-service-role)
+to set it up. The json files
 described in the article are located in the `ec2-unikernel/policies` directory.
 Note that you have to edit the parts of `role-policy.json` that are red in the
 instructions to be the bucket name you chose in the last step.
@@ -263,10 +282,12 @@ static site unikernel via SSH and only want it to serve web traffic, so we're
 going to create a security group that opens only ports 80 and 443. Use the
 following command:
 
-    $ aws ec2 create-security-group --group-name "<name>" --description "<description>"
-    $ aws ec2 authorize-security-group-ingress --group-name "<name>" --protocol tcp --port 80 --cidr 0.0.0.0/0
-    $ aws ec2 authorize-security-group-ingress --group-name "<name>" --protocol tcp --port 443 --cidr 0.0.0.0/0
-    
+```
+$ aws ec2 create-security-group --group-name "<name>" --description "<description>"
+$ aws ec2 authorize-security-group-ingress --group-name "<name>" --protocol tcp --port 80 --cidr 0.0.0.0/0
+$ aws ec2 authorize-security-group-ingress --group-name "<name>" --protocol tcp --port 443 --cidr 0.0.0.0/0
+```
+
 The group `<name>` and `<description>` can both be something as simple as
 "unikernels", since you're not sharing the security group namespace with your
 entire region.
@@ -277,18 +298,23 @@ And now, the main attraction! We've put all the pieces in place, and now we can
 finally deploy our unikernel to AWS. But before we do so, we need to rebuild the
 unikernel to target the Xen hypervisor, which is what AWS uses. This looks very similar to what we did in
 step 1:
-    
-    $ cd ~/mysite
-    $ mirage configure -t xen --dhcp=true
-    $ make depend && make
-    
+
+```
+$ cd ~/mysite
+$ mirage configure -t xen --dhcp=true
+$ make depend && make
+```
+
 When we build for the xen hypervisor, we need to enable DHCP so that our
 unikernel can find the default gateway provided by AWS when it's launched on
 EC2. Now we can upload it:
 
-    $ cd ~/ec2-unikernel
-    $ stack exec ec2-unikernel -- -o `cat ~/.aws/credentials | grep id | cut -d " " -f 3` -w `cat ~/.aws/credentials | grep secret | cut -d " " -f 3` -b <bucket-name> ~/mysite/https.xen
-    
+```
+$ cd ~/ec2-unikernel
+$ stack exec ec2-unikernel -- -o `cat ~/.aws/credentials | grep id | cut -d " " -f 3` -w `cat ~/.aws/credentials \
+| grep secret | cut -d " " -f 3` -b <bucket-name> ~/mysite/https.xen
+```
+
 We provide ec2-unikernel with our AWS keypair and the name of the S3 bucket we
 created, which is all it needs to upload and import our unikernel as an AMI. If
 the commands to get the AWS keypair don't work on your system, you can just
@@ -297,9 +323,11 @@ This takes a while, so now would be a good time to get a drink or something.
 When that's done, the last line of output will be the ID of the new AMI. We use
 that to fire up the instance from the command line:
 
-    $ AWS_SEC_ID=`aws ec2 describe-security-groups | grep -C 1 <group_name> | grep GroupId | tr -d '" ,' | cut -d ':' -f 2`
-    $ aws ec2 run-instances --image-id <image-id> --count 1 --instance-type t1.micro --security-group-ids $AWS_SEC_ID
-    
+```
+$ AWS_SEC_ID=`aws ec2 describe-security-groups | grep -C 1 <group_name> | grep GroupId | tr -d '" ,' | cut -d ':' -f 2`
+$ aws ec2 run-instances --image-id <image-id> --count 1 --instance-type t1.micro --security-group-ids $AWS_SEC_ID
+```
+
 The `<image-id>` should look like "ami-ABCD1234". `<group_name>` is the name of
 the security group you created. This should spit out a bunch
 of json about the instance. Wait about 60 seconds, then run `aws ec2 describe-instances | grep "running"`.
@@ -313,7 +341,50 @@ is for our domain name, not blahblah.compute.amazonaws.com. Put this nonetheless
 means that you were able to successfully connect to your unikernel running on
 AWS!
 
-### 7. Assign an elastic IP and configure DNS
+### 7. Maintenance
+
+As I eluded to at the beginning of the guide, one of the really nice properties
+of unikernels is every time you make a change to your site, you rebuild the
+entire software stack and upload a fresh image. This means that even if an
+attacker compromises your system through your website, the damage will be undone
+with the next image. Here are the steps you'll perform to update your site by
+deploying a new unikernel:
+
+- rebuild your static site. I'm using [jekyll](https://jekyllrb.com/) for this, so for me that's `bundle
+  exec jekyll build`.
+- rebuild your unikernel
+
+```
+$ cd ~/mysite
+$ mirage configure -t unix --net=socket --http=8080 --https=4433 # test build; OR
+$ mirage configure -t xen --dhcp=true                            # production build
+$ make depend && make
+```
+
+- upload your unikernel to EC2
+
+```
+$ cd ~/ec2-unikernel
+$ stack exec ec2-unikernel -- -o `cat ~/.aws/credentials | grep id | cut -d " " -f 3` -w `cat ~/.aws/credentials \
+| grep secret | cut -d " " -f 3` -b <bucket-name> ~/mysite/https.xen
+```
+
+- launch the unikernel, reallocate the EIP, and terminate the old unikernel
+
+```
+$ aws ec2 describe-instances | grep "InstanceId" # get the old image ID
+$ aws ec2 run-instances --image-id <image-id> --count 1 --instance-type \
+t1.micro --security-group-ids "<security-group-id>" | grep "InstanceId" # get the new image ID
+$ aws ec2 associate-address --instance-id <new-instance> --allocation-id <allocation>
+$ aws ec2 terminate-instances --instance-ids <old-instance>
+```
+
+Of course I've [scripted](https://github.com/dudelson/website/blob/69151e91ab1260404a66bd53479e7b3cff9e1828/deploy-unikernel) this entire process from stem to stern.
+
+And that's it! Go enjoy your new-and-improved unikernel life, tell your friends,
+and maybe write me a build tool that will make this easier.
+
+### 8. Assign an elastic IP and configure DNS
 
 AWS elastic IPs allow you to allocate a public IPv4 address that you can assign
 to a running EC2 instance. As in the previous step when we didn't have an EIP
@@ -330,44 +401,10 @@ sure to deploy your new unikernel and reassign the EIP before terminating the
 old one. With all that in mind, let's allocate an EIP and assign it to our
 instance:
 
-    $ ALLOC_ID=`aws ec2 allocate-address --domain vpc | grep "AllocationId" | tr -d '" ,' | cut -d ':' -f 2`
-    $ INST_ID=`aws ec2 describe-instances | grep "InstanceId" | tr -d '" ,' | cut -d ':' -f 2`
-    $ aws ec2 associate-address --instance-id $INST_ID --allocation-id $ALLOC_ID
-    
+```
+$ ALLOC_ID=`aws ec2 allocate-address --domain vpc | grep "AllocationId" | tr -d '" ,' | cut -d ':' -f 2`
+$ INST_ID=`aws ec2 describe-instances | grep "InstanceId" | tr -d '" ,' | cut -d ':' -f 2`
+$ aws ec2 associate-address --instance-id $INST_ID --allocation-id $ALLOC_ID
+```
+
 After assigning an EIP, update the type A DNS records for your domain to point to the EIP, and your site is live!
-
-### 8. Maintenance
-
-As I eluded to at the beginning of the guide, one of the really nice properties
-of unikernels is every time you make a change to your site, you rebuild the
-entire software stack and upload a fresh image. This means that even if an
-attacker compromises your system through your website, the damage will be undone
-with the next image. Here are the steps you'll perform to update your site by
-deploying a new unikernel:
-
-- rebuild your static site. I'm using [jekyll](https://jekyllrb.com/) for this, so for me that's `bundle
-  exec jekyll build`.
-- rebuild your unikernel
-
-        $ cd ~/mysite
-        $ mirage configure -t unix --net=socket --http=8080 --https=4433 # test build; OR
-        $ mirage configure -t xen --dhcp=true                            # production build
-        $ make depend && make
-    
-- upload your unikernel to EC2
-
-        $ cd ~/ec2-unikernel
-        $ stack exec ec2-unikernel -- -o `cat ~/.aws/credentials | grep id | cut -d " " -f 3` -w `cat ~/.aws/credentials | grep secret | cut -d " " -f 3` -b <bucket-name> ~/mysite/https.xen
-    
-- launch the unikernel, reallocate the EIP, and terminate the old unikernel 
-
-        $ aws ec2 describe-instances | grep "InstanceId" # get the old image ID
-        $ aws ec2 run-instances --image-id <image-id> --count 1 --instance-type
-        t1.micro --security-group-ids "<security-group-id>" | grep "InstanceId" # get the new image ID
-        $ aws ec2 associate-address --instance-id <new-instance> --allocation-id <allocation>
-        $ aws ec2 terminate-instances --instance-ids <old-instance>
-    
-Of course I've [scripted](https://github.com/dudelson/website/blob/69151e91ab1260404a66bd53479e7b3cff9e1828/deploy-unikernel) this entire process from stem to stern.
-
-And that's it! Go enjoy your new-and-improved unikernel life, tell your friends,
-and maybe write me a build tool that will make this easier.
