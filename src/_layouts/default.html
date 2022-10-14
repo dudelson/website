@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-{% include head.html %}
+{% include 'head' %}
 <body>
     <!-- <div id="thingy" > -->
-    {% include navbar.html %}
+    {% include "navbar" %}
     <div id="content" class="container">
         {{ content }}
     </div>
-    {% include footer.html %}
+    {% include "footer" %}
     <!-- </div> -->
-    {% include js.html %}
+    {% include "js" %}
 </body>
 </html>

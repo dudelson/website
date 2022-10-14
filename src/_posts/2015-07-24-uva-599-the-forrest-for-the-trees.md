@@ -12,4 +12,4 @@ However, a plain ol' `vector<int>` UFDS is not sufficient to solve this problem 
 
 Lastly, I suffered from the usual beginner mistakes I am still learning to avoid. These included forgetting to clear the maps at the beginning of each test case, and small typos, most notably `return (p[i] == i) ? i : (p[i] = getSet(i))` in the UFDS function `getSet`, which lead to infinite recursion that took me a while to debug.
 
-{% include gist.html url="https://gist.github.com/dudelson/6c2291ee9618436c1c73a38f05c1576d" %}
+{% include "gist" url="https://gist.github.com/dudelson/6c2291ee9618436c1c73a38f05c1576d" %}

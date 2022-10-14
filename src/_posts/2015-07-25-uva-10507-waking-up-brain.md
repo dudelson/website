@@ -8,4 +8,4 @@ I solved this problem using an adjacency list, since in this problem, the brain 
 
 Once again I have noticed that even a small number of mistakes/typos (in this case I counted two, as described above) can take a long time to debug. Practice makes perfect.
 
-{% include gist.html url="https://gist.github.com/dudelson/47fe5c022f6c3a698e8fd2d863764067" %}
+{% include "gist" url="https://gist.github.com/dudelson/47fe5c022f6c3a698e8fd2d863764067" %}

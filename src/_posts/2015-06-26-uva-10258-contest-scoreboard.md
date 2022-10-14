@@ -15,7 +15,7 @@ The other thing that I thought was a little tricky in this problem was reading t
 
 Lastly, I have learned to be careful using `memset` on 2D arrays. Based on how `memset` works with 1D arrays, I thought the following code would be enough to zero my 2D arrays:
 
-{% highlight c++ %}
+{% highlight cpp %}
     int array[n][m];
 for(int i=0; i<n; i++) memset(array[i], 0, m);
 {% endhighlight %}
@@ -23,7 +23,7 @@ for(int i=0; i<n; i++) memset(array[i], 0, m);
 Alas, this was not the way. Doing this results in random entries in the array not being zeroed or set to random values. Clearly I do not understand 2D arrays well enough yet. I will update this post when I know why this happens.
 
 **UPDATE**: Don't use memset at all! It is better to use `fill_n` from the `<algorithm>` header, which takes a more intuitive length parameter the same as other STL functions. Initializing a 2D nxm array using fill_n looks like:
-{% highlight c++ %}
+{% highlight cpp %}
     int array[n][m];
 for(int i=0; i<n; i++) fill_n(array[i], m, 0);
 {% endhighlight %}
@@ -31,4 +31,4 @@ Just like we would expect!
 
 Here's my solution:
 
-{% include gist.html url="https://gist.github.com/dudelson/bc483d40b9937c4cc68d8a7c1f94ebd2" %}
+{% include "gist" url="https://gist.github.com/dudelson/bc483d40b9937c4cc68d8a7c1f94ebd2" %}

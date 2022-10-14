@@ -6,4 +6,4 @@ I found [UVa 11926: Multitasking](https://uva.onlinejudge.org/index.php?option=c
 
 Another thing I want to mention before I show my solution is that like on some previous problems, I did a poor job bounds-checking my array operations at first, and I had poor test cases, so it took a while so me to catch this bug. Each UVa problem I solve reinforces more and more how important good test cases are.
 
-{% include gist.html url="https://gist.github.com/dudelson/5ae979ff839d85f7390acf62a24d6e68" %}
+{% include "gist" url="https://gist.github.com/dudelson/5ae979ff839d85f7390acf62a24d6e68" %}

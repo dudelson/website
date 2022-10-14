@@ -6,4 +6,4 @@ tags: uva
 <!--more-->
 This is a straightforward simulation problem as long as you know how to use STL queues, stacks, and priority_queues. If you don't, this is a good problem to solve in order to learn how to use them!
 
-{% include gist.html url="https://gist.github.com/dudelson/1bdea54036edb605a42e598119e5281c" %}
+{% include "gist" url="https://gist.github.com/dudelson/1bdea54036edb605a42e598119e5281c" %}

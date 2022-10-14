@@ -4,13 +4,13 @@ tags: uva implementation
 ---
 [UVa 11933: Splitting Numbers](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=24&page=show_problem&problem=3084) problem summary: Given a number n, print out a and b, where a is the number constructed from every other set bit of n and b is constructed from the other half of the set bits. This problem is simple to implement, but in my case I screwed the implementation up and made things a lot harder for myself. <!--more--> The source of my pain was an overflow error, and I learned that there is a difference between this:
 
-{% highlight c++ %}
+{% highlight cpp %}
     while(1<<i < n)
 {% endhighlight %}
 
 and this:
 
-{% highlight c++ %}
+{% highlight cpp %}
     while(1LL<<i < n)
 {% endhighlight %}
 
@@ -20,4 +20,4 @@ When I read the problem description, I saw that the input was guaranteed to be l
 
 My solution:
 
-{% include gist.html url="https://gist.github.com/dudelson/ccc52050195c5e3fd0225e8bd0ec15f9" %}
+{% include "gist" url="https://gist.github.com/dudelson/ccc52050195c5e3fd0225e8bd0ec15f9" %}

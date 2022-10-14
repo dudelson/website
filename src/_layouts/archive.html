@@ -11,7 +11,7 @@ type: archive
     {% for post in posts %}
       {% capture postmonth %} {{ post.date | date: '%Y-%m' }} {% endcapture %}
       {% if postmonth == pagemonth %}
-        {% include blog_post_listing_item.html %}
+        {% include "blog_post_listing_item" %}
       {% endif %}
     {% endfor %}
   <!-- year archives -->
@@ -21,7 +21,7 @@ type: archive
     {% for post in posts %}
       {% capture postyear %} {{ post.date | date: '%Y' }} {% endcapture %}
       {% if postyear == pageyear %}
-        {% include blog_post_listing_item.html %}
+        {% include "blog_post_listing_item" %}
       {% endif %}
     {% endfor %}
   <!-- tag archives -->
@@ -29,7 +29,7 @@ type: archive
    <h1> Tag: {{ page.title }} </h1>
    {% for post in posts %}
      {% if post.tags contains page.tag %}
-        {% include blog_post_listing_item.html %}
+        {% include "blog_post_listing_item" %}
      {% endif %}
    {% endfor %}
  {% endif %}

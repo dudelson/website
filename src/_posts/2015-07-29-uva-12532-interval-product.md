@@ -8,4 +8,4 @@ This problem can be solved with a [segment tree](http://www.geeksforgeeks.org/se
 
 When I wrote this solution this first time, I unknowningly did it with a buggy segment tree implementation, so my program often segfaulted in the beginning. However, once I debugged a few lines in the segment tree class, my only other issue was forgetting about the 1-based indexing used by the problem, a detail I seem to be forgetting a lot.
 
-{% include gist.html url="https://gist.github.com/dudelson/11f9160cee9d1f3ff2d75584f64eee09" %}
+{% include "gist" url="https://gist.github.com/dudelson/11f9160cee9d1f3ff2d75584f64eee09" %}

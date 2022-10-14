@@ -6,4 +6,4 @@ tags: uva
 <!--more-->
 This problem was basically an exercise in implementing adjacency lists. The only thing that tripped me up a little in this problem was getting the indexes right, but I always have trouble with that.
 
-{% include gist.html url="https://gist.github.com/dudelson/fc52237caf1e7a0d4026c53e0d5afff9" %}
+{% include "gist" url="https://gist.github.com/dudelson/fc52237caf1e7a0d4026c53e0d5afff9" %}

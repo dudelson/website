@@ -6,4 +6,4 @@ tags: uva
 <!--more-->
 This is another good adjacency list practice problem. By keeping an adjacency list of the indexes at which each number can be found, the queries can be answered in constant time!
 
-{% include gist.html url="https://gist.github.com/dudelson/13a5c58dda3a4a89b5c99b7d2aef5e04" %}
+{% include "gist" url="https://gist.github.com/dudelson/13a5c58dda3a4a89b5c99b7d2aef5e04" %}

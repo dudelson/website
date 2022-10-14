@@ -12,4 +12,4 @@ It was after debugging my solution on the problem input that I realized there wa
 
 At this point I submitted and got TL. I realized that the STL map I was using to look up rangesdid lookups in O(logn) (where n is the size of the map), which was too slow. The lookup needed to be in constant time. Luckily, the numbers in the array were guaranteed to be between -10^6 and 10^6, which was a small enough range to store in an array. After switching the map to a vector, my solution passed.
 
-{% include gist.html url="https://gist.github.com/dudelson/13a5c58dda3a4a89b5c99b7d2aef5e04" %}
+{% include "gist" url="https://gist.github.com/dudelson/13a5c58dda3a4a89b5c99b7d2aef5e04" %}
