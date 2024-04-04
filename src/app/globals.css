@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #fdf9ef;
+    color: #333;
+  }
+  
+  section {
+    @apply py-4
+  }
+}
+
