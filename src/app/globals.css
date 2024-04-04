@@ -4,12 +4,12 @@
 
 @layer base {
   body {
+    font-family: var(--font-spectral), serif;
     background-color: #fdf9ef;
     color: #333;
   }
-  
-  section {
-    @apply py-4
+
+  h1 {
+    font-family: var(--font-playfair), serif;
   }
 }
-

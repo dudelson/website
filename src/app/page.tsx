@@ -4,57 +4,57 @@ import Link from "next/link";
 export default function OtherPage() {
   return (
     <>
-      <header className="w-full h-[75px] bg-slate-200 py-4 mx-auto">
-        <div className="flex space-x-8">
-          <Link href="#">Substack</Link>
-          <Link href="#">Twitter</Link>
-          <Link href="#">LinkedIn</Link>
+      <header className="w-full h-[60px] bg-salmon">
+        <div className="w-full sm:w-[90ch] h-full mx-auto flex justify-between items-center px-4 sm:px-0">
+          <Link href="#writing">Substack</Link>
+          <Link href="https://twitter.com/dudelson_">Twitter</Link>
+          <Link href="https://www.linkedin.com/in/dudelson/">LinkedIn</Link>
         </div>
       </header>
 
-      <main className="flex flex-col items-center justify-between px-4 py-16 mx-auto max-w-[75ch] min-h-screen">
-        <section className="py-12 sm:flex">
-          <div>
-            <h1 className="text-2xl">David Udelson</h1>
-            <h3 className="text-xl">Web developer &amp; designer, personal growth coach, &amp; curious human</h3>
-          </div>
+      <main className="flex flex-col px-4 py-2 sm:py-16 mx-auto max-w-[90ch] min-h-screen">
+        <section className="flex flex-col sm:flex-row items-center py-4 sm:py-12">
           <Image
-            className="rounded-lg"
-            width="250"
-            height="250"
-            src="/images/prof_pic_2023_small.png"
-            alt="David Udelson"
-          />
+              className="rounded-lg order-last sm:order-none mt-4 sm:mt-0 sm:mr-8"
+              width="250"
+              height="250"
+              src="/images/prof_pic_2023_small.png"
+              alt="David Udelson"
+            />
+          <div className="sm:flex sm:flex-col sm:justify-between">
+            <h1 className="text-[48px] sm:text-[56px]">David Udelson</h1>
+            <h3 className="text-[24px] sm:text-[32px] leading-tight">Web developer &amp; designer, personal growth coach, &amp; curious human</h3>
+          </div>
         </section>
 
         <section className="py-12">
-          <h1 className="text-2xl">Software Consulting</h1>
-          <h3 className="text-xl">Delightful digital experiences for solopreneurs and small businesses with heart</h3>
-          <p>As a web design and development consultant, I create bespoke websites and web applications for individuals and small teams.</p>
+          <h1 className="text-[48px] leading-tight mb-4 sm:text-[56px] sm:mb-0">Software Consulting</h1>
+          <h3 className="text-[24px] italic leading-tight">Delightful digital experiences for solopreneurs and small businesses with heart</h3>
+          <p className="text-[18px] py-8">As a web design and development consultant, I create bespoke websites and web applications for individuals and small teams.</p>
           <CTAButton 
             text="Explore Software Consulting"
-            href="#"
+            href="https://www.udelson.dev/"
           />
         </section>
         
         <section className="py-12">
-          <h1 className="text-2xl">Growth Coaching</h1>
-          <h3 className="text-xl">One-on-one coaching for restoring agency and aliveness</h3>
-          <p>As a certified Organic Intelligence® coach in training, I guide clients out of internal chaos and into connection and wholeness.</p>
+          <h1 className="text-[48px] leading-tight mb-4 sm:text-[56px] sm:mb-0">Growth Coaching</h1>
+          <h3 className="text-[24px] italic leading-tight">One-on-one coaching for restoring agency and aliveness</h3>
+          <p className="text-[18px] py-8">As an Organic Intelligence® coach in training, I guide clients out of internal chaos and into connection and wholeness.</p>
           <CTAButton 
             text="Explore Growth Coaching"
-            href="#"
+            href="/coaching"
           />
         </section>
 
-        <section>
-          <h1 className="text-2xl">Writing</h1>
-          <p>Coming Soon!</p>
+        <section className="py-12">
+          <h1 id="writing" className="text-[48px] sm:text-[56px]">Writing</h1>
+          <p className="text-[18px] py-8">Coming Soon!</p>
         </section>
       </main>
       
-      <footer className="w-full h-[75px] bg-slate-200 py-4 text-center">
-        <p>Copyright 2024 David Udelson. All rights reserved.</p>
+      <footer className="w-full h-[60px] bg-salmon flex justify-center items-center">
+        <p>Copyright 2024 David Udelson.</p>
       </footer>
     </>
   )   
@@ -67,9 +67,9 @@ function CTAButton(
   }
 ) {
   return (
-    <button>
+    <button className="bg-salmon rounded-lg px-4 py-2">
       <Link href={href}>
-        {text}
+        <span className="text-[24px]">{text}</span>
       </Link>
     </button>
   )

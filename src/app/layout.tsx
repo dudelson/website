@@ -1,12 +1,20 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Playfair_Display, Spectral } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: '--font-playfair',
+});
+const spectral = Spectral({
+  weight: "400",
+  subsets: ["latin"],
+  variable: '--font-spectral',
+});
 
 export const metadata: Metadata = {
-  title: "David Udelson – Web Developer, Shopify Developer",
-  description: "David Udelson is a web developer and shopify developer",
+  title: "David Udelson",
+  description: "David Udelson is a web developer designer and personal growth coach",
 };
 
 export default function RootLayout({
@@ -16,7 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${playfair.variable} ${spectral.variable}`}>{children}</body>
     </html>
   );
 }
