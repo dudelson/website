@@ -32,7 +32,7 @@ export default function OtherPage() {
           <h3 className="text-[24px] italic leading-tight">Delightful digital experiences for solopreneurs and small businesses with heart</h3>
           <p className="text-[18px] py-8">As a web design and development consultant, I create bespoke websites and web applications for individuals and small teams.</p>
           <CTAButton 
-            text="Explore Software Consulting"
+            text="Learn More"
             href="https://www.udelson.dev/"
           />
         </section>
@@ -42,8 +42,8 @@ export default function OtherPage() {
           <h3 className="text-[24px] italic leading-tight">One-on-one coaching for restoring agency and aliveness</h3>
           <p className="text-[18px] py-8">As an Organic Intelligence® coach in training, I guide clients out of internal chaos and into connection and wholeness.</p>
           <CTAButton 
-            text="Explore Growth Coaching"
-            href="/coaching"
+            text="Book a Discovery Call"
+            href="https://calendly.com/dudelson/discovery-call"
           />
         </section>
 

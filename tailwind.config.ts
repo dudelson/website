@@ -13,7 +13,7 @@ const config: Config = {
         spectral: ['var(--font-spectral)', 'serif'],
       },
       colors: {
-        'salmon': '#ffdcd5',
+        'salmon': '#c0d092', // e8e8e8, #e1e4a2, #bfe6a7
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
