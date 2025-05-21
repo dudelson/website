@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --color-accent: 192 208 146;
+  }
+
   body {
     font-family: var(--font-spectral), serif;
     background-color: #fdf9ef;
@@ -11,5 +15,13 @@
 
   h1 {
     font-family: var(--font-playfair), serif;
+  }
+
+  a {
+    text-decoration: black dashed underline;
+  }
+
+  .bg-accent {
+    background-color: rgb(var(--color-accent));
   }
 }

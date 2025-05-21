@@ -1,12 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function OtherPage() {
+export default function HomePage() {
   return (
     <>
-      <header className="w-full h-[60px] bg-salmon">
+      <header className="w-full h-[60px] bg-accent">
         <div className="w-full sm:w-[90ch] h-full mx-auto flex justify-between items-center px-4 sm:px-0">
-          <Link href="#writing">Substack</Link>
+          <Link href="https://dudelson.substack.com/">Substack</Link>
           <Link href="https://twitter.com/dudelson_">Twitter</Link>
           <Link href="https://www.linkedin.com/in/dudelson/">LinkedIn</Link>
         </div>
@@ -31,17 +31,17 @@ export default function OtherPage() {
           <h1 className="text-[48px] leading-tight mb-4 sm:text-[56px] sm:mb-0">Software Consulting</h1>
           <h3 className="text-[24px] italic leading-tight">Delightful digital experiences for solopreneurs and small businesses with heart</h3>
           <p className="text-[18px] py-8">As a web design and development consultant, I create bespoke websites and web applications for individuals and small teams.</p>
-          <CTAButton 
+          <CTAButton
             text="Learn More"
             href="https://www.udelson.dev/"
           />
         </section>
-        
+
         <section className="py-12">
           <h1 className="text-[48px] leading-tight mb-4 sm:text-[56px] sm:mb-0">Growth Coaching</h1>
           <h3 className="text-[24px] italic leading-tight">One-on-one coaching for restoring agency and aliveness</h3>
-          <p className="text-[18px] py-8">As an Organic Intelligence® coach in training, I guide clients out of internal chaos and into connection and wholeness.</p>
-          <CTAButton 
+          <p className="text-[18px] py-8">As an Organic Intelligence® coach, I guide clients out of internal chaos and into connection and wholeness.</p>
+          <CTAButton
             text="Book a Discovery Call"
             href="https://calendly.com/dudelson/discovery-call"
           />
@@ -49,15 +49,18 @@ export default function OtherPage() {
 
         <section className="py-12">
           <h1 id="writing" className="text-[48px] sm:text-[56px]">Writing</h1>
-          <p className="text-[18px] py-8">Coming Soon!</p>
+          <p className="text-[18px] py-8">
+            I publish my thoughts (very) occasionally to{' '}
+            <a href="https://dudelson.substack.com/">substack</a>.
+          </p>
         </section>
       </main>
-      
-      <footer className="w-full h-[60px] bg-salmon flex justify-center items-center">
+
+      <footer className="w-full h-[60px] bg-accent flex justify-center items-center">
         <p>Copyright 2024 David Udelson.</p>
       </footer>
     </>
-  )   
+  )
 }
 
 function CTAButton(
@@ -67,8 +70,8 @@ function CTAButton(
   }
 ) {
   return (
-    <button className="bg-salmon rounded-lg px-4 py-2">
-      <Link href={href}>
+    <button className="bg-accent rounded-lg px-4 py-2">
+      <Link class="no-underline" href={href}>
         <span className="text-[24px]">{text}</span>
       </Link>
     </button>
