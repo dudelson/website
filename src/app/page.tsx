@@ -71,7 +71,7 @@ function CTAButton(
 ) {
   return (
     <button className="bg-accent rounded-lg px-4 py-2">
-      <Link class="no-underline" href={href}>
+      <Link className="no-underline" href={href}>
         <span className="text-[24px]">{text}</span>
       </Link>
     </button>
