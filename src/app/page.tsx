@@ -15,12 +15,12 @@ export default function HomePage() {
       <main className="flex flex-col px-4 py-2 sm:py-16 mx-auto max-w-[90ch] min-h-screen">
         <section className="flex flex-col sm:flex-row items-center py-4 sm:py-12">
           <Image
-              className="rounded-lg order-last sm:order-none mt-4 sm:mt-0 sm:mr-8"
-              width="250"
-              height="250"
-              src="/images/prof_pic_2023_small.png"
-              alt="David Udelson"
-            />
+            className="rounded-lg order-last sm:order-none mt-4 sm:mt-0 sm:mr-8"
+            width="250"
+            height="250"
+            src="/images/prof_pic_2023_small.png"
+            alt="David Udelson"
+          />
           <div className="sm:flex sm:flex-col sm:justify-between">
             <h1 className="text-[48px] sm:text-[56px]">David Udelson</h1>
             <h3 className="text-[24px] sm:text-[32px] leading-tight">Web developer &amp; designer, personal growth coach, &amp; curious human</h3>
@@ -43,7 +43,7 @@ export default function HomePage() {
           <p className="text-[18px] py-8">As an Organic Intelligence® coach, I guide clients out of internal chaos and into connection and wholeness.</p>
           <CTAButton
             text="Book a Discovery Call"
-            href="https://calendly.com/dudelson/discovery-call"
+            href="https://zcal.co/dudelson/discovery"
           />
         </section>
 
