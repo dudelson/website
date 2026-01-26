@@ -1,16 +1,16 @@
 import Image from "next/image";
-import Link from "next/link";
+import CTAButton from "./components/cta-button";
 
 export default function HomePage() {
   return (
     <>
-      <header className="w-full h-[60px] bg-accent">
+      {/* <header className="w-full h-[60px] bg-accent">
         <div className="w-full sm:w-[90ch] h-full mx-auto flex justify-between items-center px-4 sm:px-0">
           <Link href="https://dudelson.substack.com/">Substack</Link>
           <Link href="https://twitter.com/dudelson_">Twitter</Link>
           <Link href="https://www.linkedin.com/in/dudelson/">LinkedIn</Link>
         </div>
-      </header>
+      </header> */}
 
       <main className="flex flex-col px-4 py-2 sm:py-16 mx-auto max-w-[90ch] min-h-screen">
         <section className="flex flex-col sm:flex-row items-center py-4 sm:py-12">
@@ -21,38 +21,44 @@ export default function HomePage() {
             src="/images/prof_pic_2023_small.png"
             alt="David Udelson"
           />
-          <div className="sm:flex sm:flex-col sm:justify-between">
+          {/* <div className="sm:flex sm:flex-col sm:justify-between">
             <h1 className="text-[48px] sm:text-[56px]">David Udelson</h1>
             <h3 className="text-[24px] sm:text-[32px] leading-tight">Web developer &amp; designer, personal growth coach, &amp; curious human</h3>
-          </div>
-        </section>
-
-        <section className="py-12">
-          <h1 className="text-[48px] leading-tight mb-4 sm:text-[56px] sm:mb-0">Software Consulting</h1>
-          <h3 className="text-[24px] italic leading-tight">Delightful digital experiences for solopreneurs and small businesses with heart</h3>
-          <p className="text-[18px] py-8">As a web design and development consultant, I create bespoke websites and web applications for individuals and small teams.</p>
-          <CTAButton
-            text="Learn More"
-            href="https://www.udelson.dev/"
-          />
-        </section>
-
-        <section className="py-12">
-          <h1 className="text-[48px] leading-tight mb-4 sm:text-[56px] sm:mb-0">Growth Coaching</h1>
-          <h3 className="text-[24px] italic leading-tight">One-on-one coaching for restoring agency and aliveness</h3>
-          <p className="text-[18px] py-8">As an Organic Intelligence® coach, I guide clients out of internal chaos and into connection and wholeness.</p>
-          <CTAButton
-            text="Book a Discovery Call"
-            href="https://zcal.co/dudelson/discovery"
-          />
-        </section>
-
-        <section className="py-12">
-          <h1 id="writing" className="text-[48px] sm:text-[56px]">Writing</h1>
-          <p className="text-[18px] py-8">
-            I publish my thoughts (very) occasionally to{' '}
-            <a href="https://dudelson.substack.com/">substack</a>.
+          </div> */}
+          <p className="text-[18px]">
+            Hello and welcome to my corner of the internet. I am
+            <span className="text-[24px] tracking-wide">&nbsp;David Udelson&nbsp;</span>,
+            a coach and former software developer.
           </p>
+        </section>
+
+        <section className="py-12">
+          <h2 className="text-[48px] leading-tight mb-4 sm:text-[56px]">Offerings</h2>
+          <div className="flex flex-col items-start my-12">
+            <h1 className="text-[36px] leading-tight mb-4 sm:text-[40px] sm:mb-0">Growth Coaching</h1>
+            <h3 className="text-[24px] italic leading-tight">One-on-one coaching for restoring agency and aliveness</h3>
+            <p className="text-[18px] py-8">As an Organic Intelligence® coach, I guide clients out of internal chaos and into connection and wholeness.</p>
+            <CTAButton
+              text="Learn More"
+              href="/coaching"
+            />
+          </div>
+          <div className="flex flex-col items-end my-12">
+            <h3 className="text-[36px] leading-tight mb-4 sm:text-[40px] sm:mb-0">Software Consulting</h3>
+            <h3 className="text-[24px] italic leading-tight">Delightful digital experiences for solopreneurs and small businesses with heart</h3>
+            <p className="text-[18px] py-8">As a web design and development consultant, I create bespoke websites and web applications for individuals and small teams.</p>
+            <CTAButton
+              text="Learn More"
+              href="/web"
+            />
+          </div>
+          <div className="flex flex-col items-start my-12">
+            <h1 id="writing" className="text-[36px] sm:text-[40px]">Writing</h1>
+            <p className="text-[18px] py-8">
+              I publish my thoughts (very) occasionally to{' '}
+              <a href="https://dudelson.substack.com/">substack</a>.
+            </p>
+          </div>
         </section>
       </main>
 
@@ -60,20 +66,5 @@ export default function HomePage() {
         <p>Copyright 2024 David Udelson.</p>
       </footer>
     </>
-  )
-}
-
-function CTAButton(
-  { text, href }: {
-    text: string,
-    href: string,
-  }
-) {
-  return (
-    <button className="bg-accent rounded-lg px-4 py-2">
-      <Link className="no-underline" href={href}>
-        <span className="text-[24px]">{text}</span>
-      </Link>
-    </button>
   )
 }
